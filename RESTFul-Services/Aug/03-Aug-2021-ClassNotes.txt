@@ -1,0 +1,176 @@
+Last Session: POST Request using WebClient, Sending Headers Using WebClient
+----------------------------------------------------------------------------------------------
+-> What is WebClient?
+-> What is Sync request?
+-> What is Async request?
+-> How to send GET request using WebClient?
+-> How to send POST request using WebClient?
+-> What is block ( ) method ?
+-> What is subscribe( ) method ?
+-> How to send headers using Webclient?
+---------------------------------------------------------------------------------------------
+WebClient webclient = WebClient.create( );
+
+		webclient.get( )
+			 .uri( )
+			 .accept(MediaType.APPLICATION_JSON)
+			 .retrieve( )
+			 .bodyToMono(Class clz)
+			 .block( )
+
+					
+		webclient.post()
+			 .uri( )
+			 .contentType(MediaType.APPLICATION_JSON)
+			 .accept(MediaType.APPLICATION_JSON)
+			 .body(requestObj, Class clz)
+			 .retrieve( )
+			 .bodyToMono(Class clz)
+			 .block( )
+----------------------------------------------------------------------------------------------
+What is Mono object and What is Flux object?
+----------------------------------------------------------------------------------------------
+
+-> Mono is used to represent single object
+
+-> Flux is used to represent stream of objects
+
+----------------------------------------------------------------------------------------------
+package com.ashokit.rest;
+
+import java.time.Duration;
+import java.util.Date;
+import java.util.stream.Stream;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ashokit.domain.CustomerEvent;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
+
+@RestController
+public class CustomerRestController {
+
+	@GetMapping(value = "/getEvent", produces = "application/json")
+	public ResponseEntity<Mono<CustomerEvent>> getCustomerEvent() {
+
+		CustomerEvent event = new CustomerEvent("John", new Date());
+
+		Mono<CustomerEvent> customerMono = Mono.just(event);
+
+		ResponseEntity<Mono<CustomerEvent>> responseEntity = new ResponseEntity<Mono<CustomerEvent>>(customerMono,
+				HttpStatus.OK);
+
+		return responseEntity;
+	}
+
+	@GetMapping(value = "/getEvents", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public ResponseEntity<Flux<CustomerEvent>> getCustomerEvents() {
+
+		// Creating Pojo object with data
+		CustomerEvent event = new CustomerEvent("Smith", new Date());
+
+		// Creating Stream object to send data
+		Stream<CustomerEvent> customerStream = Stream.generate(() -> event);
+
+		// Giving Stream object to Flux object
+		Flux<CustomerEvent> ceFlux = Flux.fromStream(customerStream);
+
+		// Setting Response Interval
+		Flux<Long> interval = Flux.interval(Duration.ofSeconds(3));
+
+		// Combining IntervalFlux and CustomerEventFlux
+		Flux<Tuple2<Long, CustomerEvent>> zip = Flux.zip(interval, ceFlux);
+
+		// Getting Second Tuple value as Flux Obj
+		Flux<CustomerEvent> fluxMap = zip.map(Tuple2::getT2);
+
+		// Adding Flux Object to Response Body
+		ResponseEntity<Flux<CustomerEvent>> resEntity = new ResponseEntity<Flux<CustomerEvent>>(fluxMap, HttpStatus.OK);
+
+		// Returning ResEntity with Flux
+		return resEntity;
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+public class CustomerEvent {
+
+	private String customerName;
+
+	private Date date;
+
+	public CustomerEvent(String customerName, Date date) {
+		this.customerName = customerName;
+		this.date = date;
+	}
+}
+----------------------------------------------------------------------------------------------
+
+package com.tekleads.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.Builder;
+
+@Service
+public class CustomerEventService {
+
+	private String REST_URL1 = "http://localhost:9090/getEvent";
+	private String REST_URL2 = "http://localhost:9090/getEvents";
+
+	public void invokeCustomerEvent() {
+		Builder builder = WebClient.builder();
+		WebClient webClient = builder.build();
+		
+		String eventResponse = webClient.get()
+										 .uri(REST_URL1)
+										 .retrieve()
+										 .bodyToMono(String.class)
+										 .block();
+		System.out.println(eventResponse);
+	}
+	
+	public void invokeCustomerEvents() {
+		Builder builder = WebClient.builder();
+		WebClient webClient = builder.build();
+		webClient.get()
+				 .uri(REST_URL2)
+				 .retrieve()
+				 .bodyToFlux(String.class)
+				 .subscribe(System.out::println);
+	}
+}
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

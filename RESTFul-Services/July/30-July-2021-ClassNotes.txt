@@ -1,0 +1,4 @@
+Last session: Rest Client Development To Send POST Request to Rest API
+----------------------------------------------------------------------
+Today's session: Internals of Client and Resource Applications Execution
+-------------------------------------------------------------------------

@@ -1,0 +1,143 @@
+Last session : Why Field Injection Not recommended
+-------------------------------------------------------------------------
+Today's session : @Qualifier annotation
+-----------------------------------------------------------------------
+-> When we enable autowiring using @Autowired annotation by default it will use byType mechanism to identify dependent bean object.
+
+
+@Service
+public class ReportService {
+
+	private IReport report;
+
+	public ReportService(IReport report) {
+		System.out.println("ReportService::Constructor");
+		this.report = report;
+	}
+}
+
+-> In the above example IReport is an interface. If there is only one implementation IOC will perform Dependency Injection.
+
+-> If IReport is having more than one implementation then IOC will run into Ambiguity problem.
+
+-> To resolve such kind of ambiguity problem we will use @Qualifier annotation.
+
+
+-----------------------------------------------------------------------------------------------
+package in.ashokit.service;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import in.ashokit.beans.IReport;
+
+@Service
+public class ReportService {
+
+	private IReport report;
+
+	public ReportService(@Qualifier("excel") IReport report) {
+		System.out.println("ReportService::Constructor");
+		this.report = report;
+	}
+
+	public void generateReport() {
+		report.generate();
+		System.out.println("Report Generation Completed....");
+	}
+}
+---------------------------------------------------------------------------------------------
+-> If more than one bean is eligible for Autowiring then we will use @Qualifier annotation to resolve that ambiguity problem.
+
+-> @Autowired annotation we can use at 3 places hence @Qualifier annotation also can be used at those 3 places.
+
+			1) Constructor level
+			2) Setter level
+			3) Field level
+----------------------------------------------------------------------------------------------
+Banner in Spring Boot
+----------------------------------------------------------------------------------------------.
+-> When Spring Boot application started it will print Spring logo on the console that is called as Spring Boot banner.
+
+-> SpringApplication.run( ) method contains logic to print banner
+
+->  Spring Boot banner works based on banner mode
+
+		1) OFF
+		2) LOG
+		3) CONSOLE ( This is by default )
+
+		spring.main.banner-mode=console
+
+-> To customize banner text we can create banner.txt file in src/main/resources folder. Boot will load banner.txt file from src/main/resources folder by default.
+
+-> In Realtime people will configure Project Name or Company Name as banner text in ASCII Format.
+
+	URL to generate ASCII Text: https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
+
+-> Copy the ASCII Text and keep it in banner.txt file then boot will load it to print
+----------------------------------------------------------------------------------------------
+Runners in Spring Boot
+----------------------------------------------------------------------------------------------
+-> Runners are used to execute the logic only one time when the application got started.
+
+-> Runners will be executed as part of SpringApplication.run ( ) method
+
+-> In Spring Boot We can use 2 types of Runners
+
+		1) ApplicationRunner
+
+		2) CommandLineRunner
+
+-> The above two are functional interfaces because they contain only one abstract method i.e run( ) method.
+
+Usecases to go for Runners
+-----------------------------
+-> Load the data from database to cache.
+
+-> Send email once application started
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

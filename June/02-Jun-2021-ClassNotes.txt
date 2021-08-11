@@ -1,0 +1,63 @@
+Last session : Connection Pooling
+------------------------------------------------------------------------
+-> Connection pooling is used to avoid connections exhausted problem in our application.
+
+-> Using Connection Pooling we can improve performance of our application (for every operation we no need to open connection with DB).
+-------------------------------------------------------------------------
+Working with Transactions in Data JPA
+-------------------------------------------------------------------------
+-> An unit amount of work is called as Transaction.
+
+-> When we are performing operations with DB then Transactions are very very important.
+
+-> Transaction is mandatory for non-select operations (Insert/Update/Delete)
+
+-> Transaction is optional for select  operations (Retriving)
+-----------------------------------------------------------------------------------
+
+	Connection con = DriverManager.getConnection(Url, Uname, Pwd);
+
+	Statement stmt = con.createStatement();
+
+	int rowsEffected = stmt.executeUpdate(sqlQuery);
+
+-> In JDBC connection obj will be created with default autoCommit mode. When we execute any non-select query using jdbc api then immediatley it will commit the transaction.
+----------------------------------------------------------------------------------
+
+-> In order to disable auto-commit mode in JDBC api we will use setAutoCommit(false).
+
+		con.setAutoCommit(false);
+
+		con.commit( ) or con.rollback( );
+
+-> When we disable auto-commit mode then programmatically we have to commit the transaction or rollback the transaction manually.
+
+	-> If all operations are successful in Tx then we will commit it
+
+	-> If any one operation got failed in Tx then we will rollback it.
+
+
+
+	
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

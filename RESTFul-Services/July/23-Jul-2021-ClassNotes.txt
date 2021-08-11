@@ -1,0 +1,47 @@
+Last session : Swagger UI & Swagger Documentation
+------------------------------------------------------------------------
+Today's session : REST Client
+------------------------------------------------------------------------
+1) What is Rest Client?
+
+Ans) Any program which is capable of sending http request to server is called as Rest Client
+
+Note: Any body can act as client for Rest api
+
+	1) Browser
+	2) POSTMAN
+	3) Swagger UI
+	4) Program
+------------------------------------------------------------------------
+-> By using Spring mvc we can develop Rest Client in 2 ways
+
+		1) RestTemplate
+		2) WebClient
+
+-> RestTemplate is a predefined class which supports for Synchronus communication. This is old approach.
+
+-> Synchronus means after making a request it will wait for response.
+
+-> WebClient got introduced in Spring 5.x version. It supports both Synchronus and Asynchronus communications. It is trending in the market.
+
+-> Asynchronus means after making a request without waiting for response it will continue its execution.
+-----------------------------------------------------------------------
+-> In order to start rest client development we should know API details
+
+-> API team will provide API documentation to client team using Swagger.
+
+-> Client side team should understand API documentation and start client development based on documentation
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,194 @@
+Last session : Message Converters
+----------------------------------------------------------------------------------
+-> Message Converters are used for converting object data to json/xml format and vice versa.
+				jackson
+		java object <------------> json
+
+				
+				jax-b
+		java object <-------------> xml
+
+-> To work with JSON data in java applications we will use Jackson api. Jackson api is third party api.
+
+-> To work with XML data in java applications we will use JAX-B api. It is part of JDK only.
+----------------------------------------------------------------------------------
+JSON Data Using Jackson api
+---------------------------------------------------------------------------------
+-> JSON stands for Java Script Object Notation
+
+-> JSON will represent data in key-value format
+
+-> JSON is platform independent and language independent
+
+-> JSON is called as Intereoperable format
+
+-> Now a days applications are using JSON format to exchange the data
+
+Syntax:
+
+{
+   "id" : 101,
+   "name" : "Ashok",
+   "phno" : 6301921083
+}
+
+-> Jackson api provided ObjectMapper class to perform convertions
+
+-> The process of converting Java object to JSON format is called as "Serialization"	
+
+-> The process of converting JSON data to Java object is called as
+ "De-Serialization"
+
+-> To convert object data to json and json data to object we need class which represents structure of the JSON.
+
+-----------------------------------------------------------------------------------
+@Data 
+@JsonInclude(value = Include.NON_NULL)
+public class Book {
+	@JsonProperty("bid")
+	private Integer bookId;
+	private String bookName;
+	private Double bookPrice;
+}
+---------------------------------------------------------------------------------
+package in.ashokit;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JavaToJsonConverter {
+
+	public static void main(String[] args) throws Exception {
+
+		Book book = new Book();
+		book.setBookId(101);
+		book.setBookName("Spring");
+		book.setBookPrice(450.00);
+
+		// convert book data into json
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(book);
+		System.out.println(json);
+	}
+
+}
+---------------------------------------------------------------------------------
+package in.ashokit;
+
+import java.io.File;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JsonToJavaConverter {
+
+	public static void main(String[] args) throws Exception {
+		File file = new File("Book.json");
+		ObjectMapper mapper = new ObjectMapper();
+		Book book = mapper.readValue(file, Book.class);
+		System.out.println(book);
+	}
+}
+-----------------------------------------------------------------------------------
+{
+	"bookName": "Spring",
+	"bookPrice": 450.0,
+	"bid": 101
+}
+---------------------------------------------------------------------------------
+
+	String json writeValueAsString(Object) ---- converts obj to json
+
+	Object readValue(File f, Class type) ---> converts json to obj
+---------------------------------------------------------------------------------
+XML Data with JAX-B Api
+--------------------------------------------------------------------------------
+-> XML stands for Extensible Markup Language
+
+-> XML is platform independent and language independent
+
+-> XML will represent data in in the form of elements
+
+<person>
+  <id>101</id>
+  <name>Ashok</name>
+  <phno>6301921083</phno>
+</person>
+
+-> To convert Java Object to xml and xml to java object we have JAX-B api.
+
+-> The process of converting java obj to xml is called as "Marshalling"
+
+-> The process of converting xml data to java obj is called as "Un-Marshalling"
+
+-> To perform Marshalling and Un-Marshalling we need to have binding class
+
+-> The java class which is representing stucture of xml is called as Binding class
+
+-> To represent java class as Binding class we will use @XmlRootElement annotation.
+
+---------------------------------------------------------------------------------
+@XmlRootElement
+public class Book {
+
+	private Integer bookId;
+	private String bookName;
+	private Double bookPrice;
+
+}
+--------------------------------------------------------------------------------
+package in.ashokit;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
+public class JavaToXmlConverter {
+
+	public static void main(String[] args) throws Exception {
+
+		Book b = new Book();
+		b.setBookId(201);
+		b.setBookName("Hibernate");
+		b.setBookPrice(500.00);
+
+		JAXBContext context = JAXBContext.newInstance(Book.class);
+
+		Marshaller marshaller = context.createMarshaller();
+
+		marshaller.marshal(b, System.out);
+	}
+
+}
+-------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<book>
+	<bookId>201</bookId>
+	<bookName>Hibernate</bookName>
+	<bookPrice>500.0</bookPrice>
+</book>
+--------------------------------------------------------------------------------
+package in.ashokit;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+
+public class XmlToJavaConverter {
+	public static void main(String[] args) throws Exception {
+		JAXBContext context = JAXBContext.newInstance(Book.class);
+
+		Unmarshaller unmarshaller = context.createUnmarshaller();
+		Object object = unmarshaller.unmarshal(new File("Book.xml"));
+		Book b = (Book) object;
+		System.out.println(b);
+	}
+}
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+

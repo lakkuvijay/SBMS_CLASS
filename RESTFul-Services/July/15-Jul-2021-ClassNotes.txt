@@ -1,0 +1,47 @@
+Last session : Consumes & Content-Type
+------------------------------------------------------------------------
+-> "consumes" attribute will represent in which format rest api method can take the input data.
+
+-> "Content-Type" header is used to represent in which format client is sending data to server in request body.
+------------------------------------------------------------------------
+1) produces : Represent method supporting response formats
+2) Accept : Represents client expecting response format
+
+3) consumes : Represent method supporting request formats
+4) Content-Type : Represents client sending request format
+------------------------------------------------------------------------
+Procedure to follow to develop REST API
+---------------------------------------------------------------------------------------------
+1) Understand the requirement
+
+2) Decide consumes & produces formats
+
+3) Decide Endpoint input data structure
+
+4) Decide Endpoint output data structure
+
+5) Create Request Binding classes based on input data structure
+
+6) Create Response Binding classes based on output data structure
+
+7) Create Rest Controller with Endpoint method
+
+8) Test endpoint behaviour using Postman
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

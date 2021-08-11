@@ -1,0 +1,76 @@
+Last session : Spring Web MVC Introduction
+-------------------------------------------------------------------------
+Today's session : Spring Web MVC Architecture
+-------------------------------------------------------------------------
+
+1) FrontController
+2) HandlerMapper
+3) Controller
+4) ModelAndView
+5) ViewResolver
+6) View
+
+What is FrontController?
+----------------------------
+-> FrontController is responsible to perform pre-processing and post-processing of a request.
+
+-> In Spring Web MVC, DispatcherServlet will act as Front Controller
+
+-> DispatcherServlet is a pre-defined class.
+
+
+What is HandlerMapper?
+----------------------
+-> HandlerMapper is a pre-defined component available in Spring Web MVC
+
+-> HandlerMapper is responsible to identify Request Handler class for incoming request.
+
+-> From Spring 3.0 onwards RequestMappingHandlerMapper is executing as Default HandlerMapper.
+
+What is Controller?
+---------------------
+-> Controller is web component which is responsible to handle web request
+
+-> Controller is also called as Request Handler
+
+-> To represent java class as a Controller we will use @Controller annotation.
+
+What is ModelAndView?
+---------------------
+-> After handling the request, controller method will return ModelAndView object.
+
+-> Model is a map which stores the data in the form of Key-Value pair
+
+-> Model is used to send the data to presentation layer in key-value format.
+
+-> View Represents Logical view name that should be rendered as a response.
+
+Note: In Spring Web MVC, Controller don't know where the view files will be available and what is the view technology.
+
+What is View Resolver?
+----------------------
+-> View Resolver is used to identify location of view files and view technology
+
+-> We will configure ViewResolver with prefix and suffix
+
+	prefix ------> Represents view files location
+	suffix ------> Represents view files extension
+
+What is View?
+-------------
+-> View Component is used to render model data in view file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

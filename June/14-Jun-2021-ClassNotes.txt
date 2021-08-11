@@ -1,0 +1,41 @@
+Last session : Spring MVC Architecture
+------------------------------------------------------------------------
+1) Front Controller
+2) Handler Mapper
+3) Controller
+4) ModelAndView
+5) ViewResolver
+6) View
+-------------------------------------------------------------------------Today's session : First App Development using Spring Web MVC
+-------------------------------------------------------------------------
+1) Create Spring Starter Project with below dependencies
+
+	a) spring-boot-starter-web
+	b) spring-boot-devtools
+	c) tomcat-embed-jasper
+
+-> web-starter is used to develop web applications using Spring MVC. It will provide Tomcat as default embedded container.
+
+-> devtools dependency is used to re-start the server when changes happend in project code/configuration.
+
+-> tomcat-embed-jasper dependency is used to compile jsp files
+
+Note: If tomcat-embed jasper dependency not available then jsp file will be downloaded when user make a request.
+
+2) Configure below properties in application.properties file
+
+	a) Embedded server port
+	b) View Resolver
+
+3) Create Controller class using @Controller annotation
+
+4) Write method in controller class to handle the request
+
+5) Create View file with presentation logic
+
+6) Run the application and test it.
+
+
+
+
+

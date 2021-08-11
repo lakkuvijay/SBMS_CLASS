@@ -1,0 +1,144 @@
+Last session (16-Jun-21) : How to send data from Controller to UI
+------------------------------------------------------------------------
+17-Jun-2021 : No class
+------------------------------------------------------------------------
+Today's session : How to send data from UI to Controller
+------------------------------------------------------------------------
+-> In Web application we will have several scenarios to send data from UI to controller.
+
+Examples:
+----------
+1) Getting Emp Salary Based on Emp ID
+
+2) Getting Book Price based on ISBN
+
+3) Getting Ticket Status based on Ticket ID
+
+4) Storing Employee Information using Form
+
+5) Searching Products in E-commerce application etc..
+
+-------------------------------------------------------------------------
+-> We can use below approches to send data from UI to Controller
+
+	1) Query Parameter
+	2) Path Parameter
+	3) Request Body 
+-------------------------------------------------------------------------
+Query Parameters
+-------------------------------------------------------------------------
+-> Query Parameters are used to send data to server in URL
+
+-> Query Parameter will represent data in key-value format
+
+-> Query Parameter will start with '?' symbol
+
+-> Query Parameter will be seperated by '&'
+
+-> Query Parameter should present only at the end of the URL
+
+  Ex-1:  www.ashokit.in?course=SBMS
+
+  Ex-2:  www.ashokit.in?course=SBMS&trainer=Ashok
+     
+  Ex:3 : https://www.youtube.com/results?search_query=debugging+ashok+it
+
+  Ex:4 : https://www.youtube.com/watch?v=2WxsClYhreE
+
+-> To read query parameter from URL we will use @RequestParam annotation in controller.
+
+	syntax : 
+
+	@GetMapping("/getPrice")
+	public ModelAndView getBookPrice(@RequestParam String isbn){
+		//logic
+		return mav;
+	}
+
+-------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping("/book")
+public class BookController {
+
+	@GetMapping("/price")
+	@ResponseBody
+	public String getBookPrice(@RequestParam("isbn") String str) {
+
+		String msg = "The Book Price Of " + str + " Is  : 450.00 INR";
+
+		return msg;
+	}
+	
+}
+
+-------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping("/book")
+public class BookController {
+
+	@GetMapping("/price")
+	@ResponseBody
+	public String getBookPrice(@RequestParam("isbn") String str) {
+
+		String msg = "The Book Price Of " + str + " Is  : 450.00 INR";
+
+		return msg;
+	}
+	
+}
+
+-------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class CourseController {
+
+	@GetMapping("/course")
+	@ResponseBody
+	public String getCourseDtls(String cname, String trainer) {
+
+		if (cname.equals("SBMS")) {
+			String msg = cname + " By " + trainer + " Starting From 23-Jun-21 @6:30 AM IST";
+			return msg;
+		} else if (cname.equals("JRTP")) {
+			String msg = cname + " By " + trainer + " Starting From 30-Jun-21 @11:30 AM IST";
+			return msg;
+		}
+		return "Contact Admin Team :: + 91-6301921083";
+	}
+}
+-------------------------------------------------------------------------
+Note: If query-param key name is same as method parameter name then @RequestParam annotation is optional.
+
+  
+
+     
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,270 @@
+Last Session : Actuators
+-------------------------------------------------------------------------
+-> Actuators are used to provide production ready features of our application.
+
+-> Actuators will allow us to interact with application.
+
+-> Using Actuators we can monitor and manage our application.
+
+-> To work with Actuators we need to add below starter in pom.xml file
+
+		spring-boot-starter-actuator
+
+-> To see the actuators which are exposed for our application we can use below url
+
+		http://localhost:9090/actuator
+
+-> We can expose and exclude actuator endpoints using .properties file and .yml file.
+
+
+server:
+  port: 9090
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: beans, mappings
+
+-> All the actuator endpoints are binded to HTTP GET Request.
+------------------------------------------------------------------------
+-> We have shutdown endpoint in Actuator which is very special.
+
+-> shutdown endpoint is used to stop the application.
+
+-> Shutdown is special endpoint and it is binded to HTTP POST Request
+
+server:
+  port: 9090
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: beans, mappings
+  endpoint:
+    shutdown:
+      enabled: true
+
+Note: After enabling shutdown endpoint, send post request using POSTMAN. It will stop our application.
+-------------------------------------------------------------------------
+
+-> ROY Fielding Provided Rest Architecture principles
+
+	1) Unique Addressability
+	2) Uniform Constraint Interfaces
+	3) Message Oriented Representation
+	4) Communication Stateless
+	5) HATEOS
+
+---------------------------------------------------------------------------------
+
+-> Hypermedia as the Engine of Application State (HATEOAS).
+
+-> It is a constraint of the REST application architecture that distinguishes it from other network application architectures.
+
+-> With HATEOAS, a client interacts with a network application whose application servers provide information dynamically through hypermedia.
+
+Ex: When we search for something in google, it will provide response in hyperlinks format that means it is following HATEOS principles
+
+----------------------------------------------------------------------------------
+
+-> Client made a request to REST api to get Student information.
+
+-> Student REST api provided response in below format.
+
+{
+   "sid" : '09-SBMS-101',
+   "sname" : "Raju",
+   "srank" : 198,
+   "links" : {
+            'http://www.ashokit.in/student/09-SBMS-101/address' 
+     }
+}
+---------------------------------------------------------------------------------
+package com.ashokit.binidings;
+
+import org.springframework.hateoas.RepresentationModel;
+
+public class Book extends RepresentationModel<Book> {
+
+	private String isbn;
+	private String name;
+	private Double price;
+	private String author;
+
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String isbn, String name, Double price, String author) {
+		super();
+		this.isbn = isbn;
+		this.name = name;
+		this.price = price;
+		this.author = author;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", name=" + name + ", price=" + price + ", author=" + author + "]";
+	}
+
+}
+---------------------------------------------------------------------------------
+package com.ashokit.rest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ashokit.binidings.Book;
+
+@RestController
+public class BookRestController {
+
+	@GetMapping(value = "/book/{isbn}", produces = "application/json")
+	public Book getBookInfo(@PathVariable("isbn") String isbn) {
+	
+		Book b = new Book(isbn, "Spring", 300.00, "Rod Johnson");
+		
+		Link withRel = 
+				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(BookRestController.class)
+														  .getAllBooks())
+   			   .withRel("All-Books");
+		
+		b.add(withRel);
+		
+		return b;
+	}
+
+	@GetMapping(value="/books", produces="application/json")
+	public List<Book> getAllBooks() {
+		
+		Book b1 = new Book("ISBN001", "Spring", 300.00, "Rod Johnson");
+		Book b2 = new Book("ISBN002", "Spring Boot", 400.00, "Rod Johnson");
+		Book b3 = new Book("ISBN003", "Spring Cloud", 200.00, "Rod Johnson");
+
+		List<Book> books = new ArrayList<Book>();
+		books.add(b1); 
+		books.add(b2);
+		books.add(b3);
+		
+		return books;
+	}
+}
+----------------------------------------------------------------------------------<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.ashokit</groupId>
+	<artifactId>49-SB-REST-HATEOS-App</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>49-SB-REST-HATEOS-App</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+

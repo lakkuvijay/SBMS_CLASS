@@ -1,0 +1,52 @@
+Last session : Component scanning
+-------------------------------------------------------------------------
+
+-> Component Scanning is the process of identifying spring bean classes available in the application.
+
+-> In Spring Boot, Component Scanning is enabled by default.
+
+-> In Spring Boot, Component Scanning will start from base package.
+
+Note: The package which contains start class is called as base package.
+
+-> Once Base package scanning is completed, it will search for sub packages of base package and will scan them.
+
+Note: The packages which are starting with base package name are called as Sub packages of base package.
+
+		in.ashokit  -----------------> Base package
+
+		in.ashokit.beans ------> It is sub package for base pkg
+
+		in.ashokit.dao -------> It is sub package for base pkg
+
+		in.ashokit.service ------> It is sub pkg for base pkg
+
+		in.ashokit.controller-----> It is sub pkg for base pkg
+
+		in.ashokit.util-------> It is sub pkg for base pkg
+
+		in.ashokit.service.admin-----> It is sub pkg for base pkg
+
+		com.ashokit.model ----------> Not a sub package
+
+-> If we have multiple packages with different names then we have to specify @ComponentScan annotation like below
+
+----------------------------------------------------------------------------------
+package in.ashokit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan(basePackages = { "com.ashokit", "in.ashokit", "" })
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext ctxt = SpringApplication.run(Application.class, args);
+	}
+}
+----------------------------------------------------------------------------------
+Note: It is highly recommended to follow base package naming convention so that we no need to write @ComponentScan manually.
+

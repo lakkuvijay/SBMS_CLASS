@@ -1,0 +1,91 @@
+Last session : Timestamping in Hibernate
+-------------------------------------------------------------------------
+-> Timestamping is used to deal with creation_date and update_date columns in database.
+
+		1)@CreationTimestamp
+		2)@UpdateTimestamp
+-------------------------------------------------------------------------
+Today's session : Spring Web MVC Module (Part-3)
+-----------------------------------------------------------------------------------
+
+-> Spring Web MVC is one module available in Spring Framework
+
+-> By Using Spring Web MVC module we can develop below types of applications
+
+		1) Web Applications ( C 2 B )
+		2) Distributed Applications (B 2 B)
+
+-> Spring Boot also uses Spring Web MVC module internally to develop web applications.
+
+-> Spring Web MVC module is developed based on 2 design patterns
+
+		1) MVC Design Pattern
+		2) Front Controll Design Pattern
+
+
+MVC Design Pattern
+-------------------
+-> MVC stands for Model, View and Controller
+
+-> Model represents data
+
+-> View represents presentation logic
+
+-> Controller is responsible for handling request (Mediator btwn Model and View)
+
+-> MVC design pattern is used to develop our applications with loosely coupling.
+
+FrontController Design Pattern
+------------------------------
+-> Spring MVC module is using front controller design pattern to deal with pre-processing and post-processing of a request.
+
+-> In Spring MVC 'DispatcherServlet' acting as Front Controller.
+
+Note: DispatcherServlet is a predefined class available in Spring MVC module.
+
+
+Advantages of Spring Web MVC Module
+-----------------------------------
+-> Supports for developing both web applications and distributed applications
+
+-> Spring Web MVC application can deal with multiple presentation technologies
+
+		1) JSP
+		2) Thymeleaf
+
+-> Spring MVC supports for Form Binding
+
+Note: Form Binding means form data will be stored in object and object data will be displayed in the form.
+
+-> Spring MVC supports flexibility in form binding (It will take care of typecasting)
+
+-> It is having Front Controller to deal with Pre-Processing and Post-Processing of a request.
+
+
+Spring Web MVC Components
+-------------------------
+1) FrontController
+2) HandlerMapper
+3) Controller
+4) ModelAndView
+5) ViewResolver
+6) View
+
+
+-> FrontController is responsible to deal with Pre-Processing and Post-Processing of request.
+
+-> HandlerMapper is responsible to identify Controller to handle the request
+
+-> Controller is responsible for Request Handling
+
+-> Model represents response data and view respresents web page name to display as a response.
+
+-> ViewResolver is used to identify view file location
+
+-> View is responsible to render model data in view file.
+
+
+
+
+
+

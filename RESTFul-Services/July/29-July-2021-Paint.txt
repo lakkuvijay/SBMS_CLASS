@@ -1,0 +1,12 @@
+Last session : Rest Client Development For United Flights API
+-----------------------------------------------------------------------
+-> In order to develop Rest Client we need below details
+
+	1) API URL
+	2) Request Method
+	3) API consumes formats
+	4) API produces formats
+	5) API Input data structure
+	6) API output data structure
+
+-> API team will provide all these details using swagger or pdf document.

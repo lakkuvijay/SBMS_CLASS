@@ -1,0 +1,53 @@
+Yesterday's session : Stereotype annotations
+------------------------------------------------------------------------
+-> To represent java class as Spring Bean we will use Stereo Type annotations
+
+@Component
+@Service
+@Repository
+
+-> To represent java class as configuration class we will use @Configuration annotation.
+
+Note: When we want to perform customized configuration then we will do that by using Configuration class with the help of @Configuration annotation.
+
+-> If programmer wants to create object for the class and wants to represent that as Spring Bean then we will use @Bean annotation.
+
+Note: @Bean annotation is method level annotation.
+-------------------------------------------------------------------------
+
+@Configuration
+public class AppConfig{
+    
+     @Bean
+     public DataSource getDataSource(){
+		DataSource ds = new DataSource();
+                   ds.setUname(uname);
+		   ds.setPwd(Decryptor.decrypt(pwd));
+			//set all values
+
+		return ds;
+     }
+}
+------------------------------------------------------------------------------
+-> In application development we will use @Bean for below scenarios
+
+			-> DataSource creation
+			-> Swagger Docket obj creation
+			-> Spring Security Configuration
+			-> Kafka Producer Configuration
+			-> Kafka Consumer Configuration etc...
+
+---------------------------------------------------------------------------------
+-> Component Scan will start from base package. After base package scanning completed it will scan all sub packages in alphabetical order.
+
+Note: @Bean annotated methods will be called at the end (after all packages are scanned).
+
+
+-> @Bean annotated method can be available in any Spring Bean class but it is recommended to keep in Configuration class.
+
+
+
+
+
+
+

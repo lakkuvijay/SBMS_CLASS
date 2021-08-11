@@ -1,0 +1,30 @@
+Last Session : WebClient
+------------------------------------------------------------------------
+-> WebClient got introduced in Spring 5.x version
+
+-> Using WebClient api we can develop rest clients
+
+-> Webclient supports for both Synchronus and Asynchronus communication
+
+-> To use WebClient in our application we have to add below dependency in pom.xml file
+
+	spring-boot-starter-webflux   (Reactive Web)
+	
+
+	WebClient webClient = WebClient.create( );
+
+	String response = webClient.get( )
+			 .uri(endpointUrl)
+			 .retrieve( )
+			 .bodyToMono(String.class)
+			 .block( );
+
+	    //further logic to deal with response
+
+
+
+
+
+
+
+

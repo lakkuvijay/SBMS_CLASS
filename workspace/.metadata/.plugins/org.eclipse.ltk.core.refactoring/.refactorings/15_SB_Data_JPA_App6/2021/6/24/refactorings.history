@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;15_SB_Data_JPA_App6&apos;&#x0D;&#x0A;- Original project: &apos;15_SB_Data_JPA_App6&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     in.ashokit.entity.Employee.java&#x0D;&#x0A;     in.ashokit.repository.EmpRepository.java&#x0D;&#x0A;     in.ashokit.service.EmployeeService.java" description="Delete elements" element1="/src\/main\/java&lt;in.ashokit.entity{Employee.java" element2="/src\/main\/java&lt;in.ashokit.repository{EmpRepository.java" element3="/src\/main\/java&lt;in.ashokit.service{EmployeeService.java" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1623118787123" subPackages="false" version="1.0"/>
+</session>

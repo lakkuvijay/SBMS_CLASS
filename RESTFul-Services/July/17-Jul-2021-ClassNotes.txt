@@ -1,0 +1,112 @@
+Last session : How HTTP Post request working  internally
+-----------------------------------------------------------------------
+1) DispatcherServlet process
+2) HandlerMapper
+3) HttpMsgBodyReader
+4) HttpMsgBodyWriter
+5) MessageConverters
+6) consumes
+7) produces
+8) Content-Type
+9) Accept
+-------------------------------------------------------------------------
+-> We understood What is HTTP GET request ?
+
+-> We understood what is HTTP POST request ?
+------------------------------------------------------------------------
+-> If rest api method is responsible to provide data to client then we will bind our method to HTTP GET request using @GetMapping annotation.
+
+-> HTTP GET request will not have any request body
+
+-> If client wants to send some data to rest api GET request method then client will use Query Parameters & Path Parameters
+
+-------------------------------------------------------------------------
+
+-> If REST api method is responsible to create a new record/resource at server then we will bind our method to HTTP POST request using @PostMapping annotation.
+
+-> HTTP Post request will have request body
+
+-> Client can send data to HTTP POST Request method using Request Body.
+
+-> HTTP Request Methods will return status code as "201 Created"
+--------------------------------------------------------------------------------
+
+-> By default DispatcherServlet will decide HTTP Status code and will send to client.
+
+-> If we want to customize Http status code for our method we can use ResponseEntity.
+
+Syntax :    ResponseEntity(T body, HttpStatus status)
+
+Ex:	    new ResponseEnity(ticketResObj, HttpStatus.CREATED);
+
+------------------------------------------------------------------------
+HTTP PUT Request
+----------------------------------------------------------------------------------
+-> If our REST API method is responsible to update an existing record then we will bind our method to HTTP PUT Request Method.
+
+-> HTTP PUT Request method contains Request body.
+
+@PutMapping
+public ResponseEntity<String> updateTicket(@RequestBody Ticket request){
+
+	//logic to update the ticket
+
+	return new ResponseEntity<>(body, HttpStatus.OK);
+}
+---------------------------------------------------------------------------------
+HTTP DELETE Request
+----------------------------------------------------------------------------------
+-> If our REST API method is responsible for deleting a record then we will bind that method to HTTP DELETE Request using @DeleteMapping annotation.
+
+-> HTTP DELETE request contains Request Body
+
+
+@DeleteMapping("/delete/{empId}")
+public String deleteEmp(@PathVariable Integer empId){
+	//logic to delete record
+
+      return "Record Deleted";
+}
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

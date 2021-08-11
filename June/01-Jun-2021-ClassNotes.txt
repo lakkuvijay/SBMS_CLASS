@@ -1,0 +1,96 @@
+Last session : Dynamic Query Creation Using Example
+------------------------------------------------------------------------
+Today's session : Connection Pooling
+------------------------------------------------------------------------
+
+-> If we want to communicate with database then we need to have connection with database.
+
+-> If application having connection with database then only application can perform DB operations.
+
+-> To establish connection with Database Java applications will use JDBC api.
+
+-> In JDBC api we have DriverManager class to get connection with database.
+
+	Connection con  = DriverManager.getConnection(url,uname,pwd);
+
+-> getConnection(...) method returning Connection object.
+
+Note: The connection which is returned by getConnection(...) method is physical connection. Its mandatory that we have to close that connection once our operation got completed.
+
+-> When we open physical connections from database, if we forgot close them after sometime there is a change of getting connections exhausted problem.
+
+-> To avoid this connection exhausted problem we will use Connection Pooling concept.
+
+Connection Pooling
+------------------
+-> It is the process of getting connections when the application started and keeping them ready to use in the application.
+
+-> Connection pooling will be managed by Pool Manager.
+
+-> The connection which is taken from Connection Pool is called as Logical Connection.
+
+-> If we forgot to close the logical connection then Pool Manager will close that connection.
+
+Advantages of Connection Pooling
+--------------------------------
+-> No need to make network call everytime to get the connection with DB
+
+-> Connection Exhausted problem can be avoided.
+
+
+-> Spring Boot internally uses Hikari Connection Pool.
+
+Note: We can customize connection pool properties using application.properties file.
+
+	1) max-pool-size
+	2) connection-timeout
+	3) idel-timeout etc.
+
+Transactions
+--------------
+-> For non-select operations (insert/delete/update) Transaction is mandatory
+
+-> Data JPA is taking care of transactions which are required for Non-select operations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

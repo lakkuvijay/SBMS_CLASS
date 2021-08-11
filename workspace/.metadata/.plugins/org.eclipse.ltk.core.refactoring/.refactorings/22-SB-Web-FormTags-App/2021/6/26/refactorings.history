@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;22-SB-Web-FormTags-App/src/main/webapp/pages/dahboard.jsp&apos; to &apos;dashboard.jsp&apos;" description="Rename resource &apos;dahboard.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/pages/dahboard.jsp" name="dashboard.jsp" stamp="1624416897838" updateReferences="true"/>
+</session>

@@ -1,0 +1,12 @@
+Last Session: Rest Client Program using RestTemplate
+------------------------------------------------------------------------
+Today's session : RestTemplate details
+------------------------------------------------------------------------
+-> RestTemplate is a pre-defined class available in Spring Web MVC module
+
+-> Using RestTemplate we can send Http Request to server (Synchronus)
+
+-> After Making a Request to Server, RestTemplate will wait for response to continue its execution.
+
+-> RestTemplate provided several methods to send Http Request to server
+

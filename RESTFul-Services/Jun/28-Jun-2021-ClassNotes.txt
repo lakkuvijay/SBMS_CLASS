@@ -1,0 +1,92 @@
+Part-1: Spring Boot Internals
+
+Part-2: Spring Data JPA
+
+Part-3: Spring Web MVC
+-------------------------------------------------------------------------
+Part-4: RESTful Services (Spring With REST) - Starting from today
+Part-5: Microservices (Will start here after 20-25 days)
+Part-7: Tools
+-------------------------------------------------------------------------
+-> By using java we can develop several types of applications
+
+		1) Standalone/Desktop application
+		2) Web applications
+		3) Distributed applications (webservices)
+
+
+What is standlone application?
+------------------------------
+-> The application which runs in only one computer is called as Standlone application.
+
+	Ex: Eclipse IDE, Calc, Notepad, Antivirus etc...
+
+What is web application?
+------------------------
+-> The application whichs run over internet is called as Web application.
+
+	Ex: gmail, facebook, linkdin, irctc, ashokit.in etc...
+
+-> Multiple users can access web application at a time.
+
+-> Web applications are used for customer 2 business communication (C2B)
+
+what is distributed application?
+--------------------------------
+-> If one application is communicating with another application then it is called as Distributed application.
+
+-> To re-use one application services in other applications we will develop Distributed applications.
+
+	Ex:   Passport <----------> AADHAR
+	      Ashok IT <----------> IBM
+	      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

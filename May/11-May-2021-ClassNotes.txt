@@ -1,0 +1,66 @@
+Last session : Setter Injection
+-----------------------------------------------------------------------
+-> The process of injecting dependent bean object into target bean object using target bean setter method is called as Setter Injection.
+
+-> We can inject multiple dependent objects also using Setter methods.
+
+Note: For every dependent object we have to write its own setter method.
+
+-> After target bean created then setter method will be called to perform dependency injection.
+
+-> To perform setter injection we will specify @Autowired at setter method level.
+-------------------------------------------------------------------------
+If we do both setter and constructor injection then what will happen?
+-------------------------------------------------------------------------
+-> Always constructor injection will happen first
+
+-> After Constructor Injection, Setter Injection will execute
+
+-> Finally, Setter Injection Value will override Constructor Injection Value. So Setter Injection is final.
+
+----------------------------------------------------------------------
+public class Demo{
+
+    private Integer i ;
+
+    public Demo(Integer i){
+	this.i = i;
+    }
+    
+    public void setI(Integer i){
+	this.i = i;
+    }
+     public static void main(String... args){
+	Demo d = new Demo(10); // Constructor Injection
+	d.setI(20); //Setter Injection
+	System.out.println(i); // output : 20
+     }
+}
+-------------------------------------------------------------------------
+Today's session : Field Injection
+-------------------------------------------------------------------------
+-> It is the process of injecting dependent object into target object using target class variable.
+
+-> To perform field injection we will specify @Autowired annotation at variable level.
+-----------------------------------------------------------------------
+@Service
+public class UserService{
+
+     @Autowired
+     private UserDao userDao;   //Field Injection
+  
+}
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

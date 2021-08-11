@@ -1,0 +1,75 @@
+Last session : Put Request & Delete Request
+---------------------------------------------------------------------------------------------
+
+-> If our rest api method is responsible to update existing record then we will bind our method to PUT request method using @PutMapping annotation.
+
+-> If our rest api method is responsibel to delete existing record then we will bind our method to DELETE request method using @DeleteMapping.
+
+-> Both PUT and DELETE requests having request body.
+---------------------------------------------------------------------------------------------
+1) Collect Requirements from functional team
+
+2) Analyze the requirements
+
+3) Analyze Risk Factor
+
+4) Decide Input and Output Formats (Consumes & Produces)
+
+5) Design Request Binding Classes
+
+6) Design Response Binding Classes
+
+7) Create Rest Controller with Endpoint method(s)
+
+8) Implement Business logic
+
+9) Test api functionality using POSTMAN
+
+---------------------------------------------------------------------------------------------
+REST Documentation
+---------------------------------------------------------------------------------------------
+-> REST APIs we are developing for business to business communications (B 2 B).
+
+-> REST Apis are distributed applications with intereoperability.
+
+-> When we are developing distributed applications one application will act as Resource Application and another application will act as client application.
+
+
+	Client App (Consumer) <-----------------------> Resource App (Provider)
+
+-> If client wants to access our API they should know details of our api.
+
+-> Resource App development team should provide API documentation to Client App development team.
+
+-> API documentation should contain below details
+
+		1) Endpoint URL
+		2) Request Method
+		3) consumes formats
+		4) produces formats
+		5) Request data structure
+		6) Response data structure
+
+-> Swagger is one of the famous software which is used to generate REST API documentation.
+
+-> Swagger UI is providing user interface for testing REST APIs.
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

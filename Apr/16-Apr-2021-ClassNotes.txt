@@ -1,0 +1,58 @@
+Course Name : Spring Boot & Microservices
+
+Today : Session-02
+
+Last session : Pre-Requisites, Course Content, Timings & Duration
+------------------------------------------------------------------
+1) Spring Basics & Spring Boot Internals
+
+2) Spring Data JPA
+
+3) Spring Web MVC
+
+4) RESTFul Services (Spring REST)
+
+5) Microservices
+
+6) Fullstack Development (Angular 11) - Free For All
+
+What is Spring?
+-----------------
+-> Spring is an application development Framework
+
+-> By using Spring framework we can develop end to end application
+		1) Presentation Layer
+		2) Web Layer
+		3) Business/Service Layer
+		4) Persistence Layer
+
+-> By using Spring framework we can develop below types of applications
+
+		1) Standalone applications
+		2) Web Applications (Customer 2 Business)
+		3) Distributed Applications (Business 2 Business)
+
+-> Standalone applications will run in one system
+
+	Ex : Notepad, Calculator, Eclipse , SQL Developer etc...
+
+-> The application which runs over internet is called as Web Application. Multiple users can access web application at a time. Webapplications are meant for C 2 B.
+
+	Ex : Facebook, IRCTC, Gmail, Ashokit.in
+
+-> If one application is communicating with another application then they are called as Distributed Applications. Distributed applications are meant for Business to Business Communication.
+
+	Ex : Passport --------> AADHAR
+	     E-Comm   --------> Payment Gateways
+------------------------------------------------------------------------
+-> The problem with spring framework is we have to manage configurations manually.
+
+-> To simpliy configurations in the application Spring Team released Spring Boot.
+
+-> Spring Boot is not a seperate framework
+
+-> We should not say that Spring Boot is replacement for Spring.
+
+-> Spring Boot is an approach to develop Spring Based Applications with Minimal or less configurations.
+
+

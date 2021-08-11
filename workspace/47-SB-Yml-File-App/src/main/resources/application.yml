@@ -1,0 +1,6 @@
+server:
+  port: 9090
+app: 
+  messages:
+    greetMsg: Good Morning..!!
+    welcomeMsg: Welcome to Ashok IT..!!

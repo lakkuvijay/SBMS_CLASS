@@ -1,0 +1,28 @@
+Last session : First Web App Development using Spring Boot
+
+Today's session : Methods in Controller class & Multiple Controllers
+------------------------------------------------------------------------
+
+-> To develop web application using Spring Boot we have to add below starter in pom.xml file
+
+		spring-boot-starter-web
+
+-> When we add spring-boot-starter-web dependency it will get 'Tomact' as default container.
+
+-> Default Container runs on port number 8080. If we want to change that port number we have to write below property in application.properties file
+
+		server.port = 9090
+
+-> To represent class as a controller, we will use @Controller annotation.
+
+-> Inside controller class we will write multiple methods and we will bind those methods to Http Protocol methods using below annotations
+
+	GET Request ->	@GetMapping
+	POST Request -> @PostMapping
+	PUT Request -> @PutMapping
+	DELETE Request -> @DeleteMapping
+
+Note: Earlier people used to work with @RequestMapping annotation to bind controller methods to Http Protocol methods.
+
+		@RequestMapping(value="", method=POST)
+

@@ -1,0 +1,108 @@
+Last session : Jackson and JAX-B api
+-------------------------------------------------------------------------
+
+-> Jackson api is used to convert java object to json and vice versa.
+
+-> Any java class we can use with Jackson api.
+
+-> JAX-B api is used to convert java object to xml and xml to java object.
+
+-> Only binding class we can use with Jax-b api.
+
+-> To represent our java class as binding class we will use @XmlRootElement.
+-------------------------------------------------------------------------
+-> The process of converting java object to json is called as Serialization.
+
+-> The process of converting json data to java object is called as De-Serialization.
+
+------------------------------------------------------------------------
+-> The process of converting java object to XML is called as 'Marshalling'
+
+-> The process of converting xml data to java object is called as Un-Marshalling.
+
+-----------------------------------------------------------------------
+-> "produces" attribute will represent data formats supporting by rest api method.
+
+@GetMapping(value = "/customer", produces = { "application/json", "application/xml" })
+	public Customer getCustomerData() {
+
+		Customer customer = new Customer();
+		customer.setCustomerId(101);
+		customer.setCustomerName("Anil");
+		customer.setCustomerPhno(6868686868l);
+
+		return customer;
+
+	}
+
+-> Above method will support for both xml and json formats.
+
+-> "Accept" header is used to reprsent in which format client expecting the response.
+
+-> When client send a request with "Accept" header that value should match with produces value then only request can be processed otherwise it will return 406 Not acceptable.
+
+-------------------------------------------------------------------------
+Q) How client will know which formats supported for REST api method?
+
+Ans) Rest api development team should provide documentation to client team.
+
+Note: Now a days people are using Swagger for documentation.
+
+-------------------------------------------------------------------------
+Q) Can client send data to rest api using GET request?
+
+Ans) Yes client applications can send data to GET request method using Query Parameters & URI Parameters (Path Parameters)
+
+-> Query Parameters & URI Parameters will represent data in URL directley.
+
+ Query Param : www.ashokit.in/courses?name=SBMS
+
+ Path Param : www.ashokit.in/courses/SBMS
+
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

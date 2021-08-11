@@ -1,0 +1,89 @@
+Last session : Constructor Injection
+---------------------------------------------------------------------------------
+-> The process of injecting dependent bean object into target bean object through target bean constructor is called as 'Constructor Injection'.
+
+-> To peform Constructor Injection, IOC will create Dependent Bean object first then it will create Target Bean object.
+
+-> To inform IOC to perform Constructor Injection we will write @Autowired annotation at target class constructor.
+
+Note: If target class is having only one parameterized constructor then writing @Autowired is optional.
+
+----------------------------------------------------------------------------------
+@Service
+public class UserService {
+
+	private UserDao userDao;
+
+	@Autowired
+	public UserService(UserDao userDao) {
+		System.out.println("UserService :: 1-Param Constructor");
+		this.userDao = userDao;
+	}
+}
+---------------------------------------------------------------------------------
+Today's session : Setter Injection
+---------------------------------------------------------------------------------
+-> The process of injecting dependent bean object into target bean object through target class setter method is called as Setter Injection.
+
+-> To inform IOC to perform Setter Injection we will write @Autowired annotation at target class setter method.
+
+-> In Setter Injection target bean object will be created first then dependent bean object will be created.
+
+----------------------------------------------------------------------------------
+package in.ashokit.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import in.ashokit.dao.UserDao;
+import in.ashokit.util.EmailUtils;
+import in.ashokit.util.PwdUtils;
+
+@Service
+public class UserService {
+
+	private PwdUtils pwdUtils;
+
+	private EmailUtils emailUtils;
+
+	private UserDao userDao;
+
+	public UserService() {
+		System.out.println("UserService::Constructor");
+	}
+
+	@Autowired
+	public void setPwdUtils(PwdUtils pwdUtils) {
+		this.pwdUtils = pwdUtils;
+	}
+
+	@Autowired
+	public void setEmailUtils(EmailUtils emailUtils) {
+		this.emailUtils = emailUtils;
+	}
+
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public void registerUser() {
+		pwdUtils.encryptPwd();
+		userDao.save();
+		emailUtils.sendEmail();
+		System.out.println("User Record Saved....");
+	}
+
+}
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

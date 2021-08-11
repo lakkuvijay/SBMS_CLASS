@@ -1,0 +1,70 @@
+Last session (04-Jun-21) : Doubts clarification
+
+05-Jun & 06-Jun : No classes
+-------------------------------------------------------------------------
+Today's session : auto-ddl and composite primary key
+------------------------------------------------------------------------
+
+-> Hibernate provided several ORM properties for us to configure in the application
+
+	show_sql : To print queries on the console
+
+	format_sql : To print queries in formatted way
+
+	dialect : To convert HQL queries to SQL queries
+
+	auto-ddl : To generate schema dynamically
+
+-> For auto-ddl property having 5 options
+
+		1) create
+		2) create-drop
+		3) update
+		4) validate
+		5) none
+
+-> 'create' option will always create the new tables. If tables are already existing it will drop the existing tables and will create new tables. We will loose table old data in this approach.
+
+-> 'create-drop' option will create tables then it will perform the operation and it will delete the tables at the end. This option is used for staging operations.
+
+-> 'update' option will create tables only for first time. If tables are already available then it will use existing tables.
+
+-> 'validate' option will not make any changes to database. It will just verify entities with db tables.
+
+-> 'none' option will disable auto-ddl in application. This is default value.
+-----------------------------------------------------------------------------------
+Primary and Composite Primary Key In Database
+-----------------------------------------------------------------------------------
+
+-> Primary Key is a constraint which is used to maintain unique data in the column.
+
+-> Primary key constraint is the combination of below 2 constraints
+
+			-> NOT NULL
+			-> UNIQUE
+
+-> To map variable with Primary Key Column we will use @Id annotation.
+
+-> If a table is having more than one primary key then it is called as composite Primary Key.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------
+
+
+
+
+	

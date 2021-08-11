@@ -1,0 +1,148 @@
+Last session : How message converters works, produces and Accept
+------------------------------------------------------------------------
+-> MessageConverters are used to convert the data into intereoperable format
+
+-> XML and JSON are universal formats to exchange the data among distributed applications.
+
+-> "produces" attribute represents in which formats REST API method can produce the result
+
+   @GetMapping(value="/url", produces= {"app/json", "app/xml"}
+
+-> "Accept" header is used to specify in which format client expecting response from server.
+
+		Accept = application/json
+-------------------------------------------------------------------------
+How client can send data to server Using GET Request
+------------------------------------------------------------------------
+-> Clients will use GET request to get data from REST API
+
+-> GET Request will not contain body
+
+-> If client wants to send some data to server then we can use below 2 approaches
+
+	1) Query Parameter
+	2) Path Parameter
+
+------------------------------------------------------------------------
+Query Parameters
+-----------------------------------------------------------------------
+-> Query Parameters are used to send data to server in the URL
+
+-> Query Parameters will represent data in Key-Value format
+
+-> Query Parameters will start with '?'
+
+-> Query Parameters will be seperated by '&'
+
+	Ex-1: www.ashokit.in/courses?name=SBMS
+	Ex-2: www.ashokit.in/courses?name=SBMS&trainer=Ashok
+
+Note: Query Parameters should present only at the end of the URL.
+-----------------------------------------------------------------------
+-> At REST API side we will use @RequestParam annotation to read query parameters from URL
+
+	URL : www.ashokit.in/courses?name=SBMS
+
+    public String getCourseDetails(@RequestParam String name){..}
+
+-----------------------RequestParam-----------------------------------
+package in.ashokit.rest;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CourseRestController {
+
+	@GetMapping(value = "/course")
+	public String getCourseDetails(@RequestParam("name") String name) {
+		String msg = "";
+		if ("SBMS".equals(name)) {
+			msg = "New Batch for SBMS From 15-Jul-2021 @8:00 PM IST";
+		} else if ("JRTP".equals(name)) {
+			msg = "New Batch For JRTP From 14-Jul-2021 @11:30 AM IST";
+		} else if ("AWS".equals(name)) {
+			msg = "New Batch For AWS From 13-Jul-2021 @7:00 PM IST";
+		} else {
+			msg = "Please visit www.ashokit.in for more details";
+		}
+		return msg;
+	}
+
+	@GetMapping(value = "/fee")
+	public String getCourseFee(@RequestParam("cname") String cname, @RequestParam("tname") String tname) {
+		String msg = cname + " By " + tname + " is 5000 INR Only";
+		return msg;
+	}
+
+}
+------------------------------------------------------------------------
+Endpoint-1 URL : http://localhost:9090/course?name=AI
+Endpoint-2 URL : http://localhost:9090/fee?cname=JRTP&tname=Ashok
+-------------------------------------------------------------------------
+Path Parameters
+------------------------------------------------------------------------
+-> Path Parameters also used to send data to server in the URL
+
+-> Path Parameters are also called as URI parameters
+
+-> Path Parameters can present anywhere in the URL
+
+-> Path Parameters will start with '/' and will be seperated by '/' only
+
+-> Path Parameters will represent the value directley
+
+	Ex-1: www.ashokit.in/course/{SBMS}
+	Ex-2: www.ashokit.in/course/{SBMS}/trainer/{Ashok}
+
+-> At Rest api side we will use @PathVariable annotation to read Path Parameter value from URL
+
+package in.ashokit.rest;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CourseRestController {
+
+	@GetMapping("/course/{cname}/trainer/{tname}")
+	public String getCourseDetails(@PathVariable String cname, @PathVariable String tname) {
+		String msg = cname + " By " + tname + " Starting From 15-Jul-2021 @8:00 PM IST";
+		return msg;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+Last session: Composite Primary Key example
+-------------------------------------------------------------------------
+Today's session : Timestamping In hibernate
+------------------------------------------------------------------------
+
+-> It is highly recommended to maintain created_date and updated_date values in table.
+
+-> created_date and updated_Date column values will help us in anaylyzing the table data.
+
+-> In realtime for every table we will have CREATED_DT and UPDATED_DT columns.
+
+-> If we use timestamping concept then hibernate will take care of populating values into CREATED_DT and UPDATED_DT columns.
+
+-> To work with Timestamping we have below 2 annotations
+
+		1) @CreationTimestamp
+		2) @UpdateTimestamp
+
+-------------------------------------------------------------------------
+@Entity
+@Table(name = "INSURANCE_PLANS")
+public class InsurancePlan {
+
+	@Id
+	@GeneratedValue
+	private Integer planId;
+	private String planName;
+	private String planStatus;
+
+	@CreationTimestamp
+	@Column(updatable = false)
+	private LocalDate createdDate;
+
+	@UpdateTimestamp
+	@Column(insertable = false)
+	private LocalDate updatedDate;
+------------------------------------------------------------------------
+-> If we are using java.util.Date for variable data types then we can use @Temporal annotation to specify format of date.
+-------------------------------------------------------------------------
+1) Best Practises To Follow in Persistence Layer
+2) Hibernate vs Data JPA
+3) What is Entity class ?
+4) What is Repository interface?
+5) Data Jpa Repositories
+		a) CrudRepository
+		b) JpaRepository
+6) Pagination
+7) Sorting
+8) QueryByExample
+9) CrudRepository predefined methods
+10) findByxxx methods syntax
+11) Custom Queries in data jpa
+12) Connection pooling (Hikari)
+13) Transactions & How to rollback transactions
+14) Primary Key & Composite Primary keys
+15) Generators
+16) Custom Generators
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

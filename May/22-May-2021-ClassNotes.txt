@@ -1,0 +1,71 @@
+Last session : Doubts clarifications
+
+Today's session : CrudRepository provided methods
+------------------------------------------------------------------------
+-> Spring Data Jpa provided repository interfaces to perform DB operations
+
+	1) CrudRepository
+	2) JpaRepository
+
+-> CrudRepository provided methods to perform only crud operations
+
+-> JpaRepository provided methods to perform crud operations + pagination + sorting also.
+----------------------------------------------------------------------------------------------
+
+-> If our interface extending the properties from JPA interfaces then we no need to write single line of code also to perform crud operations.
+
+-> When we create our interface by extending jpa repository interface then implementation class will be created in the run time for our interface. By using that implementation class object we can call the methods to perform DB operations.
+
+		Note: Implementation class is a proxy class.
+
+
+CrudRepository interface methods
+--------------------------------
+save ( ) : To insert one record
+
+saveAll ( ) : To insert collection of records
+
+Note: We don't have update method.... save( ) method is polymorphic method. If primary key already exist then it will update the record else it will insert the record.
+
+findById( ) : To retrieve record using Primary Key
+
+findAllById ( ) : To retrieve records using multiple primary keys.
+
+findAll ( ) : To retrieve all records available in table
+
+existsById ( ) : To check presense of the record
+
+count ( ): To check total no.of records in available in table.
+
+deleteById ( ) : To delete a record using Primary Key
+
+deleteAllById ( ) : To delete multiple records using primary keys
+
+delete(E obj) : To delete record using entity obj
+
+deleteAll ( ) : To delete all records from the table.
+---------------------------------------------------------------------------------------------
+-> In Data JPA we can perform DB operations in 3 ways
+
+	1) Using predefined methods
+	2) By Writing findBy methods
+	3) By Using Custom Queries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

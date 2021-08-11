@@ -1,0 +1,113 @@
+Last Session : Mono and Flux object
+-------------------------------------------------------------------
+-> Mono and Flux are reactive components
+
+-> Reactive programming got introduced in Spring 5.x version
+
+-> Reactive programming means Event Driven Programs.
+
+-> We will execute our program based on some events.
+
+-> To represent single object we will use Mono
+
+-> To represent stream of objects we will use Flux
+--------------------------------------------------------------------
+1) what is application.yml file
+
+2) Actuators in Spring Boot
+-------------------------------------------------------------------
+Today's session : application.yml  file
+-------------------------------------------------------------------
+
+-> When we create Spring Boot application we will get below file by default in src/main/resources folder
+
+	  application.properties
+
+
+-> We will configure properties in the form of key-value pair in application.properties file which are required for our application
+
+-> Below are some properties which we will configure in our properties file
+
+		1) DataSource props
+		2) Server Port
+		3) View Resolver
+		4) Actuators props
+		5) Kafka Props
+		6) Redis Cache props
+		7) Security Props
+		8) Application Messages etc.
+
+-> To configure above properties we can use application.yml file also
+
+-> YML or YAML stands for YET ANOTHER MARKUP LANGUAGE
+
+-> Now a days in boot applications we are using YML files for configuring properties instead of application.properties file
+
+-> .yml files are more readable when compared with .properties files
+
+--------------------------------------------------------------------------------------
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: IES_DEV
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    username: IES_DEV
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+-------------------------------------------------------------------------------------
+-> If you already have .properties file then we can convert that file into .yml file (Right click on .properties file -> convert to .yml file)
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

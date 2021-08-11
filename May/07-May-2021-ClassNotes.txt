@@ -1,0 +1,133 @@
+Yesterday's session : @Configuration & @Bean annotations
+--------------------------------------------------------------------
+-> To represent java class as configuration class we will use @Configuration annotation.
+
+-> If we want to customize the object creation for a class then we will write method and will use @Bean annotation.
+
+	Ex: Security Configuration
+	    Kafka Producer Configuration
+	    Kafka Consumer Configuration
+            RestTemplate Configuration
+	    WebClient Configuration
+            Swagger Configuration etc...
+
+-> If we want IOC container to create object for class then we will use below annotations at class level
+
+		@Component
+		@Service
+		@Repository
+----------------------------------------------------------------------------------
+-> In Realtime we will develop our applications using Layered Architecture
+
+		-> Presentation Layer (Ui)
+
+		-> Web Layer (Controller Classes)
+
+		-> Business Layer (Service classes)
+
+		-> Persistence Layer (Dao/Repository classes)
+
+
+-> User Interface Logic will be available in Presentation Layer
+
+-> Web layer contains Controller classes which are responsible to handle request and response in web application.
+
+-> Business Layer Contains Service classes which are responsible to execute business logic
+
+  Ex: Sendng Email, Password Encryption & Decryption, Report Generation etc.
+
+-> Persistence Layer Contains Dao/Repository classes which are responsible to communicate with database.
+--------------------------------------------------------------------------------
+
+-> Controller class method should call service class method so Service Class Object should be injected into controller class object.
+
+-> Service class method should call dao method so dao class object should be injected into service class object.
+
+----------------------------------------------------------------------------------
+-> To inject one class object into another class object we will use @Autowired annotation
+
+-> The process of injecting one class object into another class object is called as  ' Dependency Injection '.
+
+-> In Spring / Spring Boot IOC container is responsible to perform this Dependency Injection.
+
+-> @Autowired annotation we can use at below 3 places
+
+		1) At Constructor Level (Constructor Injection)
+
+		2) At Setter Level (Setter Injection)
+
+		3) At Field Level (Field Injection)
+---------------------------------------------------------------------------------
+package in.ashokit.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class UserDao {
+
+	public boolean saveUser(String uname, String email, String pwd) {
+		// logic to store in db
+		System.out.println("Storing record in database....");
+		return true;
+	}
+}
+----------------------------------------------------------------------------------
+package in.ashokit.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import in.ashokit.dao.UserDao;
+
+@Service
+public class UserService {
+
+	private UserDao userDao = null;
+
+	@Autowired
+	public UserService(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public void registerUser() {
+		boolean isSaved = userDao.saveUser("ashok", "ashokitschool@gmail.com", "ashok@123");
+		if (isSaved) {
+			System.out.println("Record Saved....");
+		} else {
+			System.out.println("Failed to save....");
+		}
+	}
+}
+-------------------------------------------------------------------------------
+package in.ashokit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import in.ashokit.service.UserService;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext run = 
+				SpringApplication.run(Application.class, args);
+
+		UserService userService = run.getBean(UserService.class);
+
+		userService.registerUser();
+	}
+}
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

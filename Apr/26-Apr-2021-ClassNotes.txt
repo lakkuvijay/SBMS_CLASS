@@ -1,0 +1,50 @@
+Last session : Spring Boot application folder structure
+
+Today's session : Spring Boot Start Class
+----------------------------------------------------------------
+
+-> We are creating our boot application using maven
+
+-> We can see below folders in our maven based boot application
+	
+		src/main/java
+			- Application.java
+		src/main/resources
+			- application.properties
+		src/test/java
+		Maven Dependencies
+		target
+		pom.xml
+
+------------------------------------------------------------------------
+
+-> When we create boot application one java class will be created by default that class is called as Start Class or main class.
+
+-> Spring Boot application execution will begin from start class only.
+
+-> Start class is the entry point for boot application execution.
+-------------------------------------------------------------------------
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+}
+---------------------------------------------------------------------
+-> From Boot start class we have to understand below 2 things very clearly
+
+	1) @SpringBootApplication
+	2) SpringApplication.run( ) method
+
+-> The @SpringBootApplication annotation is equal to below 3 annotations
+
+	1) @SpringBootConfiguration
+	2) @EnableAutoConfiguration
+	3) @ComponentScan
+
+-> SpringApplication.run() method is used to bootstrap our spring boot application.
+
+
+

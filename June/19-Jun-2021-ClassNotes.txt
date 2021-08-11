@@ -1,0 +1,123 @@
+Last session : Query Parameters
+-------------------------------------------------------------------------
+-> Query Parameters are used to send data to server in URL
+
+-> Query Parameters will be represented in Key-value format
+
+-> Query Parameters will start with '?'
+
+-> Query Parameters will be seperated by &
+
+-> Query Parameters should present only at the end of the URL
+
+-> To read Query Parameters we will use @RequestParam("key") annotation
+
+	Ex: www.ashokit.in?course=SBMS
+
+-------------------------------------------------------------------------
+Today's session : Path Parameters
+-------------------------------------------------------------------------
+-> Path Parameters are used to send data to Server in URL
+
+-> Path Parameters will represent data directley (No Key)
+
+-> Path Parameters can present anywhere in the URL
+
+-> Path Parameters will be seperated by slash ('/')
+
+Note: Path Paramters should be represented in URL Pattern
+
+	Sample URL : "/book/{isbn}/price"
+
+Note: In the above URL 'isbn' is path parameter
+
+-> To read path parameter values from URL we will use @PathVariable annotation in Controller class.
+
+-------------------------------------------------------------------------
+package in.ashokit;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class CarController {
+
+	@GetMapping("/price/{carName}")
+	@ResponseBody
+	public String getCarPrice(@PathVariable("carName") String carName) {
+
+		String msg = carName + " Price is 7.8 lakhs";
+
+		return msg;
+	}
+
+	@GetMapping("/check/{carName}/{location}/{branch}/cars")
+	@ResponseBody
+	public String checkDtls(@PathVariable String carName, 
+			@PathVariable String location, @PathVariable String branch) {
+
+		String responseMsg = "In " + location + " " + branch + " Branch " + carName + " Cars are available";
+
+		return responseMsg;
+	}
+}
+----------------------------------------------------------------------------------
+
+-> If we use Query Params or Path Params to send the data to server then data will be exposed in URL
+
+-> If data is exposed in URL we have security breaches
+
+Note-1: It is not at all recommended to send confidential information to server in the URL (password, credit card number, Pin number, SSN, Aadhar etcc)
+
+Note-2: URL will have length limitation (we can send 1024 characters)
+
+Note-3: We can't send binary data (videos, audios, images etc) in URL
+------------------------------------------------------------------------------
+-> If we want to send any small text information which is not sensitive then we can use Query Parameter and Path Parameter to send that data to server
+
+-> In Web based application we will use Query Params
+
+-> In Rest Apis we will use Path Params
+-----------------------------------------------------------------------------------
+-> To resolve drawbacks of Query Params and Path Params we will use Request Body to send huge/sensitive/confidential/binary data to server.
+
+-> The data which is sending to server in Request Body will not be exposed in URL.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

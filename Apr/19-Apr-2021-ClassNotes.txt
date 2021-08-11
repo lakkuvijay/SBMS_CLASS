@@ -1,0 +1,116 @@
+------------------------------------------------------------------------
+First Session (Thursday) : Pre-requisites & Course Content
+ (https://www.youtube.com/watch?v=A-KwZ_-Tf4s)
+
+Second Session (Friday) : What is Spring Boot?
+  (https://www.youtube.com/watch?v=L-xgZHTJHl0)
+
+Last Saturday & Sunday Classes were not there
+-----------------------------------------------------------------------
+Today - Spring Boot & Microservices - ( Session - 03 )
+-------------------------------------------------------------------------
+What is Spring Boot ?
+---------------------
+-> Spring Boot is an approach to develop spring based applications with minimal or less configurations.
+
+Note: Spring Boot is not replacement for Spring Framework because Spring Boot is developed on top of Spring framework only.
+
+-> Spring Boot is promoting spring framework.
+
+What type of applications can be developed by using spring framework?
+---------------------------------------------------------------------
+-> Standalone application (Specific to one machine)
+
+		Ex: Eclipse, Notepad, MS Office, Calc
+
+-> Web applications (Runs over internet)
+
+		Ex: gmail, irctc, facebook, ashokit.in
+
+-> Distributed applications (Webservices)
+
+		Ex: Passport ---> AADHAR, Zomato ---> Payment Gateways
+
+What type of applications can be developed by using Spring Boot?
+-----------------------------------------------------------------
+What type of applications can be developed by using Spring same type of applications can be developed by using Spring Boot also.
+
+---------------------------------------------------------------------------------
+-> If we develop the applications using Spring framework then we have take care of lot of configurations.
+
+-> If we develop the applications by using spring boot we no need to take care of configurations because Spring Boot Came up with "AUTO CONFIGURATION" support.
+
+-> Auto configuration means it will identify what configuration is required to run our application and it will provide that configuration.
+
+Ex:
+---
+-> If we develop web application by using Spring Boot
+	
+	-> It will configure DispatcherServlet as a front controller
+	-> It will configure view resolver to resolve view files (jsp, thymeleaf)
+	-> It will provide server also to run our application.
+
+Note: If we use plain spring all the above 3 steps we have to do manually. Boot will provide all those 3 steps as part of Auto Configuration.
+
+-> Spring Boot is an approach to develop spring based applications with minimal or less configurations.
+
+What are the advantages of Spring Boot
+--------------------------------------
+1) Starter Poms
+
+2) Auto Configuration
+
+3) Embedded Servers
+
+4) Actuators
+
+5) Rapid application development
+
+----------------------------------------------------------------------------------
+-> Starter poms are used to reduce maven configuration in pom.xml file. Spring Boot provided several starter poms like below
+
+	spring-boot-starter (for standalone applications)
+
+	spring-boot-starter-web (for web & distributed applications)
+
+	spring-boot-starter-data-jpa (for Persistence layer)
+
+	spring-boot-stater-mail (For java mail api)
+	
+	spring-boot-starter-test (For Unit Testing)
+
+-> Based on Starter Poms spring boot will identify configuration which is required for our application and will proivde that in runtime.
+
+
+-> Spring Boot is providing Embedded Servers to run our web applications as part 'spring-boot-starter-web' dependency.
+
+		1) Apache Tomcat (Default)
+		2) Jetty
+		3) Netty
+
+Note: If required we can deploy boot applications into external servers also like Weblogic, Websphere, jboss etc..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Angular 11 With TypeScript (FREE BATCH) @11:30 AM IST
+------------------------------------------------------
+Zoom Url:- www.zoom.us/j/85438599947
+PassCode:- 123123
+
+
+

@@ -1,0 +1,32 @@
+package in.ashokit.service;
+
+import java.util.function.Function;
+
+import org.reactivestreams.Publisher;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import reactor.core.publisher.Mono;
+
+@Service
+public class QuoteService {
+
+	public Mono<String> invokeQuoteApi() {
+		String apiUrl = "https://quoters.apps.pcfone.io/api/random";
+
+		WebClient webClient = WebClient.create();
+
+		Mono<String> bodyToMono = webClient.get()
+										   .uri(apiUrl)
+										   .retrieve()
+										   .bodyToMono(String.class)
+										   .flatMapMany((Function<? super String, ? extends Publisher<? extends R>>) response -> {
+											   System.out.println(response);
+										   });
+
+		return bodyToMono;
+
+	}
+
+	
+}

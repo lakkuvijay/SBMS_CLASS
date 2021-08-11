@@ -1,0 +1,184 @@
+Last Session : Spring Web MVC Tag Library Introduction
+---------------------------------------------------------------------------------------------
+Today's session : Form Development using MVC Tag Library
+---------------------------------------------------------------------------------------------
+
+1) Create Spring Boot Starter Project with below dependencies
+
+	a)spring-boot-starter-web
+	b)spring-boot-devtools
+	c)tomcat-embed-jasper
+
+2) Configure below properties in application.properties file
+	
+	a)Embedded Server Port
+	b)View Resolver
+
+3) Create Form Binding Class (Command Class)
+
+4) Create Controller class with below methods
+	
+	a) Method to load the form
+	b) Method to handle form submission
+
+5) Create View file
+
+6) Run the application and test it.
+	
+--------------------------------pom.xml--------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.1</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>in.ashokit</groupId>
+	<artifactId>22-SB-Web-FormTags-App</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>22-SB-Web-FormTags-App</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+-----------------------------ProductController.java------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import in.ashokit.bindings.Product;
+
+@Controller
+public class ProductController {
+
+	@GetMapping("/loadForm")
+	public String loadForm(Model model) {
+
+		Product pobj = new Product();
+
+		model.addAttribute("product", pobj);
+
+		return "index";
+	}
+
+	@PostMapping("/saveProduct")
+	public String handleSaveBtnClick(Product product, Model model) {
+
+		System.out.println(product);
+
+		model.addAttribute("msg", "Product Saved Successfully");
+
+		return "dashboard";
+
+	}
+
+}
+----------------------------------index.jsp--------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h3>Product Form</h3>
+
+	<form:form action="saveProduct" modelAttribute="product" method="POST">
+		<table>
+			<tr>
+				<td>Product ID</td>
+				<td><form:input path="productId" /></td>
+			</tr>
+			<tr>
+				<td>Product Name</td>
+				<td><form:input path="productName" /></td>
+			</tr>
+			<tr>
+				<td>Product Price</td>
+				<td><form:input path="productPrice" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Save" /></td>
+			</tr>
+		</table>
+	</form:form>
+</body>
+</html>
+---------------------------------dashboard.jsp-------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>${msg}</h2>
+
+<a href="loadForm">Go Back</a>
+</body>
+</html>
+---------------------------application.properties--------------------------------------------
+server.port=9090
+
+spring.mvc.view.prefix=/pages/
+spring.mvc.view.suffix=.jsp
+---------------------------------------------------------------------------------------------
+

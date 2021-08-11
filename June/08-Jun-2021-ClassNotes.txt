@@ -1,0 +1,251 @@
+Last session : ddl-auto & composite primary key introduction
+-------------------------------------------------------------------------
+
+-> ddl-auto is an ORM property which is used to generate the schema dynamically based on entities.
+
+-> ddl-auto property having 4 options
+
+		1) create (always new table will be created)
+		2) create-drop (create and drop the table)
+		3) update (Only first time it will create tbl)
+		4) validate (to verify schema details)
+
+
+-> Primary key is a constraint which represents not null and unique value.
+
+-> If table having more than one primary key then it is called as Composite Primary Key or Candidate key.
+
+---------------------Tbl creation with PK-----------------------------------------
+CREATE TABLE EMP_TBL(
+  EMP_ID NUMBER(10),
+  EMP_NAME VARCHAR2(20),
+  EMP_SALARY NUMBER(10,2),
+  PRIMARY KEY(EMP_ID)
+)
+---------------------TBL creation with Composite PK-------------------------------
+CREATE TABLE ACCOUNTS(
+  ACC_ID NUMBER(10),
+  ACC_TYPE VARCHAR2(10),
+  HOLDER_NAME VARCHAR2(20),
+  MIN_BAL NUMBER(10,2),
+  BRANCH_NAME VARCHAR2(20),
+  PRIMARY KEY(ACC_ID, ACC_TYPE, HOLDER_NAME)
+)
+---------------------------------------------------------------------------------
+-> We can map composite primary keys in 2 ways
+
+		1) Using @IdClass annotation (approach-1)
+		2) Using @Embeddable & @EmbeddedId annotations (approch-2)
+
+-> Approach-1 & Approach-2 examples are given below
+
+---------------------------------------------------------------------------------
+
+Composite Primary Key - Approach - 1
+----------------------------------------------------------------------------------
+
+public class AccountPK implements Serializable {
+
+	private Integer accId;
+	private String accType;
+	private String holderName;
+	//setters & getters
+}
+-----------------------------------------------------------------------------------
+@Entity
+@Table(name = "BANK_ACCOUNTS")
+@IdClass(AccountPK.class)
+public class Account {
+
+	@Column(name = "BRANCH_NAME")
+	private String branchName;
+
+	@Column(name = "MIN_BAL")
+	private Double minBal;
+
+	@Id
+	private Integer accId;
+
+	@Id
+	private String accType;
+
+	@Id
+	private String holderName;
+
+	//setters & getters
+----------------------------------------------------------------------------------
+package in.ashokit.service;
+
+import org.springframework.stereotype.Service;
+
+import in.ashokit.entity.Account;
+import in.ashokit.entity.AccountPK;
+import in.ashokit.repository.AccountRepository;
+
+@Service
+public class AccountService {
+
+	private AccountRepository accRepo;
+
+	public AccountService(AccountRepository accRepo) {
+		this.accRepo = accRepo;
+	}
+
+	public void saveAccData() {
+		Account acc = new Account();
+		acc.setBranchName("Ameerpet");
+		acc.setMinBal(5000.00);
+		acc.setAccId(102);
+		acc.setAccType("SAVINGS");
+		acc.setHolderName("IBM");
+
+		accRepo.save(acc);
+	}
+}
+-----------------------------------------------------------------------------------
+package in.ashokit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import in.ashokit.service.AccountService;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
+		AccountService accountService = context.getBean(AccountService.class);
+		accountService.saveAccData();
+
+		context.close();
+	}
+}
+-----------------------------------------------------------------------------------
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE
+spring.datasource.username=IES_DEV
+spring.datasource.password=IES_DEV
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+
+spring.jpa.show-sql=true
+
+spring.jpa.hibernate.ddl-auto=update
+-----------------------------------------------------------------------------------
+Composite-Primary key : Approach-2
+--------------------------------------------------------------------------------
+package in.ashokit.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class AccountPK implements Serializable {
+
+	private Integer accId;
+	private String accType;
+	private String holderName;
+
+	//setters & getters
+}
+----------------------------------------------------------------------------------
+package in.ashokit.entity;
+
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "BANK_ACCOUNTS")
+public class Account {
+
+	@Column(name = "BRANCH_NAME")
+	private String branchName;
+
+	@Column(name = "MIN_BAL")
+	private Double minBal;
+
+	@EmbeddedId
+	private AccountPK accPk;
+
+	//setters & getters
+}
+----------------------------------------------------------------------------------
+package in.ashokit.service;
+
+import org.springframework.stereotype.Service;
+
+import in.ashokit.entity.Account;
+import in.ashokit.entity.AccountPK;
+import in.ashokit.repository.AccountRepository;
+
+@Service
+public class AccountService {
+
+	private AccountRepository accRepo;
+
+	public AccountService(AccountRepository accRepo) {
+		this.accRepo = accRepo;
+	}
+
+	public void saveAccData() {
+
+		AccountPK pk = new AccountPK();
+		pk.setAccId(103);
+		pk.setAccType("SAVINGS");
+		pk.setHolderName("TCS");
+
+		Account acc = new Account();
+		acc.setBranchName("Ameerpet");
+		acc.setMinBal(5000.00);
+
+		acc.setAccPk(pk); // setting pk class obj to entity obj
+
+		accRepo.save(acc);
+	}
+}
+---------------------------------------------------------------------------------
+package in.ashokit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import in.ashokit.service.AccountService;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
+		AccountService accountService = context.getBean(AccountService.class);
+		accountService.saveAccData();
+
+		context.close();
+	}
+}
+----------------------------------------------------------------------------------
+How to retrieve data using Composite Primary Keys
+----------------------------------------------------------------------------------
+public void getDataUsingPK() {
+
+		AccountPK pk = new AccountPK();
+		pk.setAccId(101);
+		pk.setAccType("CURRENT");
+		pk.setHolderName("IBM");
+
+		Optional<Account> findById = accRepo.findById(pk);
+		if (findById.isPresent()) {
+			System.out.println(findById.get());
+		}
+	}
+-----------------------------------------------------------------------------------
+-> All the primary key values we need to store in Embeddable class obj and pass that obj as parameter for findById( ) method like above.
+-----------------------------------------------------------------------------------
+
+
+

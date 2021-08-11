@@ -1,0 +1,54 @@
+Yesterday's session : SpringApplication.run  ( ) method..
+---------------------------------------------------------------------
+-> When we create spring boot application we are getting one java class in src/main/java folder.
+
+-> The java class which is created is called as Start Class in Spring Boot.
+
+-> Start class in entry point for spirng boot application execution
+
+-> Start class contains main method whichc calls SpringApplication.run ( ) method.
+
+---------------------------------------------------------------------------------
+@SpringBootApplication
+public class Application{
+
+     public static void main(String... args){
+		SpringApplication.run(Application.class, args);
+	}
+}
+--------------------------------------------------------------------------------
+
+-> SpringApplication.run(..) method performs bootstrapping of spring boot application.
+
+Note: Bootstrapping means starting the application.
+
+-> By using spring Boot we can create 3 types of applications
+
+		1) Reactive Application
+
+		2) Web Application
+
+		3) Standalone application
+
+-> At the time of creating boot project, if we don't select any dependency it will add 'spring-boot-starter' dependency by default. This will be considered as Standalone application.
+
+-> At the time of creating boot project, if we select 'spring-boot-starter-web' dependency then it will be considered as 'SERVLET' based application.
+
+-> At the time of creating boot project, if we select 
+'spring-boot-starter-webflux' dependency then it will be considered as 'REACTIVE' based application.
+
+Note: In SpringApplication class constructor logic is available to identify what type of project we have created ( deduceFromClassPath() );
+
+
+
+
+
+
+
+
+
+
+
+
+
+

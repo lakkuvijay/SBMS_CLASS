@@ -1,0 +1,71 @@
+Spring Boot & Microservices - Online Training
+----------------------------------------------
+Start Date: 15-Apr-2021
+Class Timings : 7:30 AM IST - 8:30 AM IST
+Duration : 3 months
+
+Trainer : Mr. Ashok (8+ yrs experience, Working in Product Based Company)
+		     (5 Years Experience in training)
+
+Facebook Group : Ashok IT School (8.8k)
+
+Youtube Channel Name: youtube.com/c/AshokIT
+------------------------------------------------------------------------
+
+Pre-Requesites to attend Spring Boot & Microservices
+-------------------------------------------------------
+Core Java 
+
+Adv Java (JDBC , Servlets & JSP)
+
+Spring Core Module (IOC container & DI)
+
+ORM Basics (Good to have)
+
+Basics of SQL (DDL & DML Operations)
+------------------------------------------------------------------------
+Who should learn this Spring Boot & Microservices?
+------------------------------------------------------------------------
+Now a days every person who wants work with Java Programming language should know Spring Boot & Microservices.
+
+-> In IT industry, every java project is getting developed using Spring Boot only
+
+-> The legacy projects also migrating to Spring Boot
+
+-> In resume if spring boot & microservices is not available companies will not invite you for interview.
+
+Course Content
+--------------
+1) Spring Basics, Spring Boot Internals
+
+2) Spring Data JPA
+
+3) Spring Web MVC
+
+4) RESTful Services (Spring REST)
+
+5) Microservices
+
+6) Fullstack Development (Angular 11 with TypeScript)  - @11:30 AM IST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

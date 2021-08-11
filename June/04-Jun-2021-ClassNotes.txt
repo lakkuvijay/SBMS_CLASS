@@ -1,0 +1,9 @@
+Last session : How to rollback transaction in Data JPA
+-------------------------------------------------------------------------
+
+-> We can use @Transactional(rollbackFor=T) to rollback the transaction when exception occured.
+
+-> If exception not occured then data jpa will commit the transaction
+-------------------------------------------------------------------------
+Today's session : Doubts clarifications
+------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+Last session : Rest Client Development Using RestTemplate for Quote API
+-----------------------------------------------------------------------
+Today's session : RestClient development using RestTemplate for United Flights API
+------------------------------------------------------------------------------
+United Flights API Details
+--------------------------------------------------------------------------------
+Endpoint URL : http://mu.mulesoft-training.com/essentials/united/flights/
+
+Request Method : GET
+
+consumes: NA
+
+produces : application/json
+
+Input : NA
+
+Output : Flights Info in Json format
+---------------------------------------------------------------------------------

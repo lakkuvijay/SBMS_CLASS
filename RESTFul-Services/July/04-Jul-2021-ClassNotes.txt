@@ -1,0 +1,71 @@
+Last session : URL Mapping & Http Methods
+-------------------------------------------------------------------------
+1) Unique Addressbility
+2) Uniform Constraint Interfaces
+3) Message Oriented Representation
+4) Communication Stateless
+5) HATEOS
+------------------------------------------------------------------------
+-> In REST api, every method should be binded to unique address. To achieve this we are writing URL pattern at class level and method level also.
+
+-> Every REST API method should be binded to HTTP Protocol method So thatClients can easily access our REST API methods using HTTP Protocol.
+-------------------------------------------------------------------------
+
+-> ResponseEntity class we are using Construct response to client.
+
+-> Using ResponseEntity class we can set "response body" and 
+"http status code" for response.
+------------------------------------------------------------------------
+-> Consumer/Client application will send request to Provider/Resource application.
+
+-> Provider/Resouce application will process the request and will send response to Consumer/Client with HTTP Status Code.
+
+-> HTTP Status Codes will tell how that request got processed by server.
+
+
+1xx - (100-199) Req info
+
+2xx - (200 - 299 ) Success (ok)
+
+3xx - (300 - 399) Redirect
+
+4xx - (400 - 499) Client Error
+
+5xx - (500 - 599) Server Error
+----------------------------------------------------------------------------------
+HTTP Protocol
+---------------------------------------------------------------------------------
+Http Protocol is divided into 2 parts
+
+1) HTTP Request
+
+2) HTTP Response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

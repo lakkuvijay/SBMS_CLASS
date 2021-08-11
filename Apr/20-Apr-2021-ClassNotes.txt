@@ -1,0 +1,86 @@
+First Session (Thursday) : Pre-requisites & Course Content
+ (https://www.youtube.com/watch?v=A-KwZ_-Tf4s)
+
+Second Session (Friday) : What is Spring Boot?
+  (https://www.youtube.com/watch?v=L-xgZHTJHl0)
+
+Third Session (Monday) : Advantages of Spring Boot
+  (https://www.youtube.com/watch?v=gaH0hbrHdSM)
+-------------------------------------------------------------------------
+Today's session (4th session) - Spring Boot Advantages & Dis-Advantages
+-------------------------------------------------------------------------
+
+What is Spring Boot?
+--------------------
+-> Spring Boot is an approach to develop Spring Based applications with minimal or less configurations.
+
+-> What ever the applications we can develop by using Spring same type of applications can be developed by using Spring Boot also.
+
+		1) Standalone apps
+		2) Web apps
+		3) Distributed apps (Webservices & Restful Services)
+
+-> We can't say spring boot is replacing spring because Spring Boot is internally using Spring framework only.
+
+Advantages of Spring Boot
+--------------------------
+1) Starter poms
+2) Auto Configuration
+3) Embedded Servers
+4) Actuators
+5) Embedded Databases Integration
+6) Rapid Application Development
+
+
+-> Starter poms are used to reduce maven configuration. Spring Boot provided several starters like below
+
+		spring-boot-starter
+		spring-boot-starter-web
+		spring-boot-starter-data-jpa
+		spring-boot-starter-actuator
+		spring-boot-starter-mail etc...
+
+-> Spring Boot main advantage is AutoConfiguration. Based on Starter poms spring boot will identify what configuration is required to run our application and it will provide that configuration.
+
+	Ex: FrontController Configuration
+            Web Application Deployment
+
+-> Spring Boot is providing Embedded Servers to run our applications.
+
+-> Deploying Web application to server is an universal requirement. As everybody requires to setup server and deployment boot people has automated deployment process using Embedded Servers.
+
+-> Spring Boot provided Several Embedded servers for us
+
+		1)tomcat (default)
+		2)jetty
+		3)netty
+		4)undertow
+
+Note: We can deploy Spring Boot application into external servers also.
+-------------------------------------------------------------------------
+
+-> Spring Boot provided actuators which are used to provide production ready features of our applications.
+
+		1) What is health of application
+
+		2) How many objects created in our app
+
+		3) How much memory utilized
+
+		4) How many classes loaded
+
+		5) how many threads are running
+
+		6) What are the config props loaded
+
+		7) What are the last 100 requests came to our app
+
+
+-> Spring Boot is having very good integration support with Embedded Databases like h2, derby etc...
+
+-> Now a days in industry spring boot is mainly using to develop Microservices Based applications (Rest apis)
+
+-> We can develop applications very easily & quickly by using spring boot because boot will provide auto configuration. Spring Boot is supporting for Rapid application development by providing infrastructure which is required for our application.
+
+
+

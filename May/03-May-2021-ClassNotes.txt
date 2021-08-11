@@ -1,0 +1,72 @@
+Last session (27-Apr) : SpringApplication.run(..) method
+------------------------------------------------------------------------
+-> SpringApplication.run(..) method is part of main method which is available in springboot start class.
+
+-> Spring boot start class is the entry point for spring boot application execution.
+
+-----------------------------------------------------------------------
+@SpringBootApplication
+public class Application{
+
+   public static void main(String... args){
+	SpringApplication.run(Application.class, args);
+   }
+}
+-----------------------------------------------------------------------
+-> @SpringBootApplication annotation is equal to below 3 annotations
+
+	1) @SpringBootConfiguration
+	2) @EnableAutoConfiguration
+	3) @ComponentScanning
+
+-> SpringApplication.run() method will start boot application execution process.
+
+-> Below things are executing as part of run( ) method.
+
+	-> It will identify type of the project
+			- Reactive (webflux starter)
+			- Web Servlet (web starter)
+			- Default Standalone (boot starter)
+
+	-> It will start stop watch to calculate time
+
+	-> It will start listeners based on spring.factories file
+
+	-> It will prepare environment (profiles it will load)
+
+	-> It will print banner (we can customize banner)
+	
+	-> It will create IOC based on application type
+
+	-> It will prepare & refresh application context
+
+	-> It will stop the StopWatch and will calculate total time
+
+	-> Call Runners
+
+	-> It returns IOC container reference( ConfigurableAppCtxt )
+-------------------------------------------------------------------------
+
+	
+
+
+What is Component Scanning?
+-----------------------------
+-> Programmer has to enable component scanning in spring framework
+
+-> Programmer no need to enable component scanning in spring boot (by default it is enabled as part of Start class)
+------------------------------------------------------------------------
+-> Component Scanning is the process which is used to identify component classes (spring beans) available in the application.
+
+-> Component Scanninng will work based on base package naming convention
+
+
+
+
+
+
+
+
+
+
+

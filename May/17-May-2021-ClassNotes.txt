@@ -1,0 +1,36 @@
+Last session : We have completed Part-1 in SBMS
+-------------------------------------------------------------------------
+16-May-2021 Assignment : Best Practises To Follow In Persistence Layer
+
+https://www.youtube.com/watch?v=HlJ_WVazbJc&list=PLpLBSl8eY8jTRHChKKG_eeTWuNPblJnrG&index=1
+------------------------------------------------------------------------
+Today's session : Database Setup
+-------------------------------------------------------------------------
+
+-> To perform persistent operations we need persistent store.
+
+-> Persistent Store is nothing but database where we can store the data permanently for future access.
+
+-> We can perform below persistent operations in persitent store
+
+		1) CREATE / INSERT
+		2) UPDATE
+		3) RETRIEVE
+		4) UPDATE
+
+
+-> In order to work with Databases we need to have below 2 softwares
+
+			1) Database Server S/w
+			2) Database Client S/w
+
+
+-> For Oracle DB Server, SQL Developer software will be used as client
+
+-> For MySQL DB server, Mysql workbench will be used as client
+
+
+
+
+
+

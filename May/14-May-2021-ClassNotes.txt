@@ -1,0 +1,29 @@
+12-May-2021 & 13-May-2021 : No classes
+-----------------------------------------------------------------------------------
+Last session : Field Injection In Spring
+----------------------------------------------------------------------------------
+-> When we specify @Autowired annotation at variable evel then IOC will perform Field Injection.
+
+-> To perform Field Injection IOC will internally uses Reflection API.
+
+Note: Using Reflection API we can access private variables outside of the class also but it is not recommended approach.
+
+-> With in one target class we can declare multiple dependent beans and we can injecting them using Field Injection.
+-----------------------------------------------------------------------------------
+Why Field Injection is not recommended ?
+----------------------------------------------------------------------------------
+1) Internally it will use Reflection Api to inject value into private variable outside of the class which is against OOPS principles.
+
+-> With Field Injection if we inject too many dependencies our class will violates Single Responsibility Principle.
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+Last session : Steps to develop first application using data jpa
+------------------------------------------------------------------------
+-> To develop our application using data jpa we have to select below starter
+
+		'spring-boot-starter-data-jpa'
+
+-> To communicate with database we need to have driver class. Every Database provided their own driver class
+
+		Oracle -----> OracleDriver
+		MySql ------> MySqlDriver
+		SqlServer ----> SqlServerDriver
+
+-> To Establish connection with DB we need to configure DB properties in application.properties file
+
+-> To perform DB operations we need to create Entity and Repository
+
+
+	Entity ---------> Mapping with db table
+        Repository --------> Contains methods to perform operations
+
+-------------------------------------------------------------------------
+

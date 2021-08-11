@@ -1,0 +1,96 @@
+Last session : CrudRepository methods, findBy methods, @Query
+-------------------------------------------------------------------------
+-> In Data jpa we can execute queries in 3 ways
+
+		1) predefined methods
+		2) findByXXX methods
+		3) Custom Queries (@Query annotation)
+
+-> We discussed about HQL & SQL queries
+
+-> Dialect class is used to convert HQL query to SQL query.
+------------------------------------------------------------------------
+I have shared videos for below concepts
+
+1) JpaRepository introduction
+
+2) JpaRepository methods
+
+3) Pagination
+
+4) Sorting
+
+5) Generators
+
+6) Custom Generator
+-------------------------------------------------------------------------
+Query By Example
+-------------------------------------------------------------------------
+
+Requirement:
+------------
+Retrieve all Managers working for IRCTC project in Hyd location.
+
+//if we select all 3 drop-down values then below query should execute
+
+select * from emp_tbl where emp_role='Manager' and emp_project='IRCTC' and emp_location='HYD';
+
+//if we select only emp_role then below query should execute
+select * from emp_tbl where emp_role='Manager';
+
+//if we select only emp_project then below query should execute
+select * from emp_tbl where emp_project='SBI';
+
+//if we select only emp_location then below query should execute
+select * from emp_tbl where emp_location='PUNE';
+
+
+
+
+
+
+
+
+public List<Employee> searchEmps(EmpSearchCriteria esc){
+	StringBuilder sql = "select * from emp_tbl where 1=1";
+
+  	if(esc.getEmpRole()!=null){
+		sql.append(" and emp_role='+esc.getEmpRole()+"'";
+ 	}
+        if(esc.getEmpProject()!=null){
+               sql.append(" and emp_project='+esc.getEmpProject()+"'";
+        }
+	if(esc.getEmpLoc()!=null){
+		sql.append(" and emp_loc='+esc.getEmpLoc()+"'";
+        }
+}
+---------------------------------------------------------------------------------
+
+
+
+Employee [empId=103, empName=John, empSal=18000.0]
+Employee [empId=104, empName=Ram, empSal=23000.0]
+Employee [empId=105, empName=Rani, empSal=24000.0]
+Employee [empId=101, empName=Ashok, empSal=14000.0]
+Employee [empId=102, empName=Kumar, empSal=15000.0]
+Employee [empId=106, empName=Smith, empSal=15000.0]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

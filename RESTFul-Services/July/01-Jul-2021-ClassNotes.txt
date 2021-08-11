@@ -1,0 +1,134 @@
+Last session (Tuesday) : Distributed application architecture
+------------------------------------------------------------------------
+-> In distributed applications 2 actors will be available
+
+		1) Provider App
+		2) Consumer App
+
+-> The application which is giving business services to other applications is called as provider application.
+
+-> The application which is taking business services from other applications is called as consumer application.
+
+
+-> Provider and consumer applications will exchange the data in intereoperable format.
+
+-> XML, JSON and YAML are universal formats to exchange the data.
+
+-> HTTP protocol will acts as mediator between Consumer and Provider to exchange the data.
+-------------------------------------------------------------------------
+-> Distributed applications can be developed in 2 ways
+
+		1) SOAP Based Webservices (Outdated)
+		2) Restful Services (Trending)
+
+-> SOAP Webservices can be developed in 2 ways
+
+		1) JAX-RPC api
+		2) JAX-WS api
+
+-> RESTFul services can be developed in 2 ways
+
+		1) JAX-RS api
+		2) Spring with REST (Trending)
+-------------------------------------------------------------------------
+RESTful Services Evolution
+------------------------------------------------------------------------
+-> Initially people used to develop distributed applications with intereoperablity using SOAP Webservices.
+
+-> Over a period "Roy Fielding" identified some challenges to work with Soap webservices.
+
+-> Roy Fielding provided some architecture principles to develop distributed applications with intereoperability.
+
+-> If we develop our application by using "Roy Fielding" principles then our application is called "Restful service".
+
+-------------------------------------------------------------------------
+REST Architecture Principles
+-------------------------------------------------------------------------
+1) Unique Addressbility
+
+2) Uniform Constraint Interfaces
+
+3) Message Oriented Representation
+
+4) Communication Stateless
+
+5) HATEOS
+-------------------------------------------------------------------------
+
+-> In Rest API we can write several methods to perform distributed operations. Every method should have unique address. This is called as Unique Addressability.
+
+
+public class IrctcRestApi{
+       ("/ticket")
+      public Ticket BookTicket();
+       ("/status")
+      public String getPnrStatus()
+      ("/cancel")
+      public String cancelTicket();
+      ("/trains")
+      public List<Train> getTrains();
+}
+-------------------------------------------------------------------------
+-> All the methods which are available in Rest api should bind with HTTP Protocol methods. This is called Uniform Constraint Interfaces.
+
+	GET Request ----> GET Method --------> @GetMapping
+
+	POST Request ----> POST method ------> @PostMapping
+
+        PUT Request -----> PUT method -------> @PutMapping
+
+	DELETE Request --> DELETE method ----> @DeleteMapping
+
+------------------------------------------------------------------------
+-> Message Oriented Representation nothing but Provider and Consumer can exchange the data as per their requirement.
+
+------------------------------------------------------------------------
+-> Consumer request information should not be store at provider side. Every request should be treated as first request only. This is called communication stateless.
+
+-----------------------------------------------------------------------
+-> HATEOS stands for Hypermedia as an engine for application state. Provider should send data to consumer in hypermedia format.
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+Last session : REST Architecture Principles
+-------------------------------------------------------------------------
+-> Roy Fielding provided Architecture principles to develop Restful services
+
+1) Unique Addressability
+
+2) Uniform Constraint Interfaces
+
+3) Message Oriented Representation
+
+4) Communication Stateless
+
+5) HATEOS
+
+-----------------------------------------------------------------------
+Few Important Annotations We will Use in Spring With REST
+-------------------------------------------------------------------------
+
+@RestController : To represent java class as distributed component
+
+@GetMapping : To bind our method to HTTP GET request
+@PostMapping : To bind our method to HTTP POST Request
+@PutMapping : To bind our method to HTTP PUT Request
+@DeleteMapping : To bind our method to HTTP DELETE request
+
+@RequestParam : To read query parameter from URL
+@PathVariable : To read URI parameter/Path Parameter from URL
+
+@RequestBody : To read data from Request Body sent by client
+@ResponseBody : To represent data as response to client
+-------------------------------------------------------------------------
+Developing First REST API using Spring With REST
+-------------------------------------------------------------------------
+
+1) Create Spring Boot application with below dependencies
+
+		a)spring-boot-starter-web
+		b)spring-boot-devtools
+
+2) Create Distributed Component Using @RestController
+
+3) Write Required methods in Rest Controller and bind them to HTTP Protocol methods
+
+4) Configure Server Port Number in application.properties file
+
+5) Run the application and test it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

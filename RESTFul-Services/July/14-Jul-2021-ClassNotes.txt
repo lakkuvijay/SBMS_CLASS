@@ -1,0 +1,143 @@
+Last session : Path Parameters & Query Parameters
+-------------------------------------------------------------------------
+
+-> Clients will use Path Parameters and Query Parameters to send the data to server in URL.
+
+-> Query Params will represent data in key-value format
+
+-> Path Params will represent data directley in URL
+
+-> In C 2 B (Customer To Business) applications we will use Query Params
+
+-> In B 2 B (Business To Business) applications we will use Path Params.
+-------------------------------------------------------------------------
+Challenges with Path Params & Query Params
+------------------------------------------------------------------------
+-> Data Will Be Exposed in URL
+
+-> Not recommended to send sensitive data
+
+-> Bindary Data we can't send
+
+-> URL length limitation  (2038 characters)
+------------------------------------------------------------------------
+
+Note: If we want to send any non-sensitive and small info to server then we can use Path Params & Query Params.
+
+------------------------------------------------------------------------
+-> To overcome the limitations of Path Params & Query Params we will use Request Body to send data to server.
+
+Note: GET request doesn't have body. POST , PUT and DELETE requests are having request body.
+
+-------------------------------------------------------------------------
+HTTP POST Request
+-------------------------------------------------------------------------
+-> Http POST method is used to create a new record/resource at server
+
+-> To bind our method to HTTP post request we will use @PostMapping
+
+-> For POST request method client can send data in request body
+
+-------------------------------------------------------------------------
+package in.ashokit.bindings;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class User {
+
+	private Integer uid;
+	private String fname;
+	private String lname;
+	private String email;
+
+	public User() {
+		System.out.println("User::Constructor");
+	}
+
+	public Integer getUid() {
+		return uid;
+	}
+
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", fname=" + fname + ", lname=" + lname + ", email=" + email + "]";
+	}
+
+}
+-----------------------------------------------------------------------
+package in.ashokit.rest;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import in.ashokit.bindings.User;
+
+@RestController
+public class UserRestController {
+
+	@PostMapping(
+			value = "/user",
+			consumes = { "application/json", "application/xml" },
+			produces = { "text/plain" }
+	)
+	public String addUser(@RequestBody User user) {
+		System.out.println(user);
+		String msg = "User Saved Successfully..";
+		return msg;
+	}
+}
+
+------------------------------------------------------------------------
+{
+    "uid" : 101,
+    "fname" : "Ashok",
+    "lname" : "IT",
+    "email" : "ashokit@gmail.com"
+}
+
+---------------------------------------------------------------------
+<user>
+	<uid>102</uid>
+	<fname>Ashok</fname>
+	<lname>IT</lname>
+	<email>ashokit@gmail.com</email>
+</user>
+-------------------------------------------------------------------------
+
+
+
+
+
+
+
+

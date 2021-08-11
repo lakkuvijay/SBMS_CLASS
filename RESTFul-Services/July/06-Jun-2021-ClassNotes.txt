@@ -1,0 +1,34 @@
+Last session : HTTP Protocol Methods
+-------------------------------------------------------------------------
+
+-> Below 4 methods we will use as part of REST api development
+
+		1) GET Method  (Getting the data)
+		2) POST Method (Creating record)
+		3) PUT Method (Updating record)
+		4) DELETE Method (Deleteing record)
+-------------------------------------------------------------------------
+1) What is Unique Addressability?
+2) What is Uniform Constraint Interfaces?
+-------------------------------------------------------------------------
+Message Oriented Representation
+-------------------------------------------------------------------------
+-> Client app & Resource app can exchange the data as per their requirement.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

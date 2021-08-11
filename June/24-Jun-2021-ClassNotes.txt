@@ -1,0 +1,309 @@
+Last session : Application Development Using Spring MVC Tag Library
+-------------------------------------------------------------------------
+Today's session : Student Registration Form Development
+-------------------------------------------------------------------------
+
+1) Create Project with below dependencies
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.1</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>in.ashokit</groupId>
+	<artifactId>23-SB-Web-Student-Reg-App</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>23-SB-Web-Student-Reg-App</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+------------------------------------------------------------------------
+2) Configure below properties in application.properties
+-------------------------------------------------------------------------
+server.port=9090
+
+spring.mvc.view.prefix=/pages/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE
+spring.datasource.username=IES_DEV
+spring.datasource.password=IES_DEV
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+
+spring.jpa.show-sql=true
+-------------------------------------------------------------------------
+3) Create Entity classes (Course, Timings, Genders)
+-------------------------------------------------------------------------
+@Entity
+@Table(name = "COURSES")
+public class Courses {
+
+	@Id
+	@Column(name = "COURSE_ID")
+	private Integer courseId;
+
+	@Column(name = "COURSE_NAME")
+	private String courseName;
+}
+
+@Entity
+@Table(name = "GENDERS")
+public class Genders {
+
+	@Id
+	@Column(name = "GENDER_ID")
+	private Integer genderId;
+
+	@Column(name = "GENDER_NAME")
+	private String genderName;
+}
+
+
+@Entity
+@Table(name = "TIMINGS")
+public class Timings {
+
+	@Id
+	@Column(name = "TIMING_ID")
+	private Integer timingId;
+
+	@Column(name = "TIMING_NAME")
+	private String timingName;
+}
+-------------------------------------------------------------------------
+4) Create Repository Interfaces for tables
+-------------------------------------------------------------------------
+public interface CoursesRepository extends JpaRepository<Courses, Serializable> {
+
+}
+
+public interface GendersRepository extends JpaRepository<Genders, Serializable> {
+
+}
+
+public interface TimingsRepository extends JpaRepository<Timings, Serializable> {
+
+}
+-------------------------------------------------------------------------
+5) Create Service Class
+------------------------------------------------------------------------
+Service
+public class StudentService {
+
+	@Autowired
+	private GendersRepository gendersRepo;
+
+	@Autowired
+	private CoursesRepository coursesRepo;
+
+	@Autowired
+	private TimingsRepository timingsRepo;
+
+	public List<String> getGenders() {
+		List<Genders> findAll = gendersRepo.findAll();
+
+		List<String> genders = new ArrayList<>();
+
+		findAll.forEach(gender -> {
+			genders.add(gender.getGenderName());
+		});
+
+		return genders;
+	}
+
+	public List<String> getCourses() {
+		List<Courses> findAll = coursesRepo.findAll();
+
+		List<String> courses = new ArrayList<>();
+		findAll.forEach(course -> {
+			courses.add(course.getCourseName());
+		});
+
+		return courses;
+	}
+
+	public List<String> getTimings() {
+		List<Timings> findAll = timingsRepo.findAll();
+
+		List<String> timings = new ArrayList<>();
+		findAll.forEach(timing -> {
+			timings.add(timing.getTimingName());
+		});
+
+		return timings;
+	}
+}
+-------------------------------------------------------------------------
+6) Create Form Binding Class
+-------------------------------------------------------------------------
+public class Student {
+
+	private String name;
+	private String email;
+	private Long phno;
+	private String gender;
+	private String course;
+	private String[] timings;
+}
+-------------------------------------------------------------------------
+7) Create StudentController class
+-------------------------------------------------------------------------
+@Controller
+public class StudentController {
+
+	@Autowired
+	private StudentService studentService;
+
+	@GetMapping("/loadForm")
+	public String loadRegForm(Model model) {
+
+		model.addAttribute("genders", studentService.getGenders());
+		model.addAttribute("courses", studentService.getCourses());
+		model.addAttribute("timings", studentService.getTimings());
+
+		Student sobj = new Student();
+
+		model.addAttribute("student", sobj);
+
+		return "index";
+	}
+
+	@PostMapping("/saveStudent")
+	public String handleRegBtnClick(Student student, Model model) {
+
+		System.out.println(student);
+
+		model.addAttribute("msg", "Student Registered Successfully...!!");
+
+		return "dashboard";
+	}
+}
+-------------------------------------------------------------------------
+8) Create View Files
+------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>Student Registration Form</h2>
+
+	<form:form action="saveStudent" modelAttribute="student" method="POST">
+
+		<table>
+			<tr>
+				<td>Name</td>
+				<td><form:input path="name" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><form:input path="email" /></td>
+			</tr>
+			<tr>
+				<td>Phno</td>
+				<td><form:input path="phno" /></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td><form:radiobuttons items="${genders}" path="gender" /></td>
+			</tr>
+			<tr>
+				<td>Course</td>
+				<td><form:select path="course">
+						<form:options items="${courses}" />
+					</form:select></td>
+			</tr>
+			<tr>
+				<td>Timings</td>
+				<td><form:checkboxes items="${timings}" path="timings" /></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Register"/>
+			</tr>
+			
+		</table>
+	</form:form>
+
+</body>
+</html>
+-------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>${msg}</h2>
+
+	<a href="loadForm">Go Back</a>
+</body>
+</html>
+-------------------------------------------------------------------------

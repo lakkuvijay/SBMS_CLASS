@@ -1,0 +1,30 @@
+Last session : How to create First Application using Spring Boot
+-----------------------------------------------------------------
+-> We can create Spring Boot application in 2 ways
+
+		1) initiazr website (start.spring.io)
+		2) IDE (Spring Tool Suite)
+
+-> If we create Spring Boot application using Initiazer website we will get application in zip format then we have to unzip that and we have to import into IDE to start our Development.
+
+-> If we use IDE to create Spring Boot Application (Spring Starter Project) internally it will access "start.spring.io" website to create the project.
+
+Note: As IDE accessing start.spring.io our system should have Internet 
+connection to create the boot application.
+
+Spring Boot Application Folder Structure
+--------------------------------------------
+
+		
+
+
+
+
+
+
+
+
+
+
+
+

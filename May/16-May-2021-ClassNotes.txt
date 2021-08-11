@@ -1,0 +1,77 @@
+Last session : Runners in Spring Boot
+-------------------------------------------------------------------------
+-> Runners are used to execute logic only one time when the application got started.
+
+-> Spring Boot supports for 2 types of Runners. They are
+
+			1) ApplicationRunner
+			2) CommandLineRunner
+
+-> Runners will be called from SpringApplication.run( ) method.
+
+-> We can use runner to load the data from database to cache once application started.
+
+-> We can use runner to send the email to project management once application started.
+----------------------------------------------------------------------------------
+
+1) What is Spring Boot?
+2) Spring vs SpringBoot
+3) Spring Boot Advantages
+	- Starter Pom
+	- Auto Configuration
+	- Embedded Servers
+	- Embedded Databases
+	- Actuators
+	- Rapid Application Development
+4) Spring Boot Dis-Advantage
+5) Spring Initializr (start.spring.io)
+6) Creating Spring Starter Project in STS
+7) First Application Creation Using SpringBoot
+8) Spring Boot Application Folder Structure
+9) Spring Boot Start Class
+10) SpringApplication.run ( ) method
+11) @SpringBootApplication
+		- @SpringBootConfiguration
+		- @EnableAutoConfiguration
+		- @ComponentScan
+12) Component Scan
+13) How to represent java class as Spring Bean?
+14) Stereotype annotations
+		- @Component
+		- @Service
+		- @Repository
+15) @Configuration
+16) @Bean
+17) Base Package Convention
+18) IOC Container
+19) Dependency Injection
+20) Constructor Injection
+21) Setter Injection
+22) Field Injection
+23) Why Field Injection is not recommended
+24) Autowiring
+	- Constructor Level
+	- Setter Level
+	- Field Level
+25) Autowiring Modes
+26) @Qualifier & @Primary
+27) Banner & Banner Modes
+		- OFF
+		- LOG
+		- CONSOLE (By default)
+28) Runners in Spring Boot
+		- ApplicationRunner
+		- CommandLineRunner
+
+
+
+
+
+
+
+
+
+
+
+
+

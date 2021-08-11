@@ -1,0 +1,73 @@
+Last session: Spring Web application Development
+-------------------------------------------------------------------------
+Today's session : Thymeleaf
+------------------------------------------------------------------------
+-> We are developing web based applications using Spring Web MVC Module
+
+-> In Spring web mvc module we are using JSP as a presentation technology
+
+-> Traditionally this JSP is the default choice for generating html files while building web based applications using java.
+
+-> JSP is very matured technology
+
+Some Important Points To Know About JSP
+---------------------------------------
+1) JSP is not a template engine it will not render web page directley on browser
+
+2) JSP files will be converted into servlet to produce response on the browser
+-------------------------------------------------------------------------
+Thymeleaf
+-------------------------------------------------------------------------
+-> Thymeleaf is true template engine
+
+-> Thymeleaf takes HTML file, parse it and then produce web content on browser directley
+
+-> Thymeleaf is more like HTML
+
+-> Using Thymeleaf we can display dynamic data in HTML files.
+
+-> Spring Boot supports for Thymeleaf as a presentation technology
+
+-> To work with thymeleaf in our project, we need to add below starter
+
+	<dependency>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-thymeleaf<artifactId>
+	<dependency>
+Note: We no need to do any other configurations to work with thymeleaf. Spring Boot will take care of all configurations required for thymeleaf
+
+----------------------------------------------------------------------------------
+Developing First Application Using Thmeleaf
+-----------------------------------------------------------------------------------
+1) Create Spring Boot application with below dependencies
+
+		a)web starter
+		b)thymeleaf starter
+		c)devtools
+
+2) Create Controller class with required methods
+
+3) Create HTML file using Thymeleaf template
+
+Note-1 : View Files(HTML) should be created in src/main/resources/templates
+Note-2 : View extension will be .html only
+
+4) Configure Server Port in application.properties file
+
+5) Run the application and test it.
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+Last session : Rest Client Introduction
+-------------------------------------------------------------------------------------------
+
+-> The application which is accessing business services from other applications is called as Client application.
+
+-> In order to access business services we will develop Rest Client
+
+-> Using Spring we can develop Rest client in 2 ways
+
+		1) RestTemplate (Sync) - Outdated
+		2) WebClient (Sync & Async)
+-------------------------------------------------------------------------------------------
+-> In order to develop REST Client we need to know API details like below
+
+		1) Endpoint URL
+		2) Request Method Type
+		3) Consumes
+		4) Produces
+		5) Input Data Structure
+		6) Output Data Structure
+-------------------------------------------------------------------------------------------
+API URL : https://quoters.apps.pcfone.io/api/random
+
+Request Method : GET
+
+consumes : N/A
+produces : application/json
+
+Request data structure : N/A
+Response data structure : 
+{
+    "type": "success",
+    "value": {
+        "id": 11,
+        "quote": "I have two hours today to build an app from scratch. @springboot to the rescue!"
+    }
+}
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+

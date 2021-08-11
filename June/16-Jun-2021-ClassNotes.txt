@@ -1,0 +1,187 @@
+Last session : Spring MVC Controllers and Method
+------------------------------------------------------------------------
+-> In one application we can have multiple controllers.
+
+-> One controller can have multiple methods
+
+-> We need to make sure all the methods are binded to unique url patterns.
+
+-> To avoid ambiguity problem in url patterns we will write both class level and method level url patterns.
+-------------------------------------------------------------------------
+Today's topic : Sending data from Controller to UI (response data)
+-------------------------------------------------------------------------
+-> In Spring MVC application, Controller is responsible for sending data to UI.
+
+-> To send the data from Controller to UI we have Model or ModelAndView objects.
+
+-> Model and ModelAndView objects will represent the data in key-value format.
+
+	syntax: model.addAttribute(String key, Object value);
+
+-> Based on keys we will access values in Presentation files using expression language.
+
+		syntax :  ${key}
+
+-------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class BookController {
+
+	@GetMapping("/bookdata")
+	public String getBookData(Model model) {
+
+		// setting data to model obj
+		model.addAttribute("name", "Spring Boot");
+		model.addAttribute("author", "Rod Johnson");
+		model.addAttribute("price", 450.00);
+
+		return "book-data";// returning logical view name
+	}
+}
+
+-----------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import in.ashokit.pojo.Product;
+
+@Controller
+public class ProductController {
+
+	@GetMapping("/productdata")
+	public ModelAndView getProductData() {
+		ModelAndView mav = new ModelAndView();
+
+		Product pobj = new Product();
+		pobj.setProductId(101);
+		pobj.setProductName("Keyboard");
+		pobj.setProductPrice(1500.00);
+
+		mav.addObject("product", pobj); // adding product obj to model in Key-value format
+		
+		mav.setViewName("product-data"); // setting logical view name
+
+		return mav;
+	}
+
+}
+
+-------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import in.ashokit.pojo.Plan;
+
+@Controller
+public class InsurancePlanController {
+
+	@GetMapping("/plandata")
+	@ResponseBody
+	public Plan getPlanData() {
+
+		Plan p = new Plan();
+		p.setPlanId(101);
+		p.setPlanName("Jeevan Anand");
+		p.setPlanStatus("Approved");
+
+		return p;
+	}
+}
+-------------------------------------------------------------------------
+package in.ashokit.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class IndexController {
+
+	@GetMapping
+	public String index() {
+		return "index";
+	}
+}
+------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>Welcome to our store.......</h2>
+	<hr />
+	<a href="bookdata">Get Book Data</a>
+	<br />
+
+	<a href="productdata">Get Product Data</a>
+</body>
+</html>
+-------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		<h2>Book Data</h2>
+		
+		Book Name : ${name} <br/>
+		Author Name : ${author} <br/>
+		Book Price: ${price} <br/>
+		
+		<a href="/">Home</a>
+</body>
+</html>
+-------------------------------------------------------------------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		<h2> Product Data </h2>
+		Product ID : ${product.productId} <br/>
+		
+		Product Name : ${product.productName} <br/>
+		
+		Product Price : ${product.productPrice} <br/>
+		
+		<a href="/">Home</a>
+</body>
+</html>
+-------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+Get Book Data Hyperlink =====>   localhost:9090/bookdata
+
+Get Product Data Hyperlink ====> localhost:9090/productdata
+
+Home Hyperlink ====> localhost:9090/
+------------------------------------------------------------------------

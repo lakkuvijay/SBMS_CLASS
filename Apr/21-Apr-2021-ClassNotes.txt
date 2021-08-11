@@ -1,0 +1,78 @@
+Yesterday's session : Spring Boot Advantages
+
+Note: Already 4 classes completed, those videos available in our YouTube Channel (youtube.com/c/AshokIT)
+----------------------------------------------------------------------------------
+Session : 05 
+---------------------------------------------------------------------------------
+-> Spring Boot is an approach to develop Spring Based applications with minimal or less configurations.
+
+Spring Boot Advantages
+-----------------------
+1) Starter Poms
+2) Auto Configuration
+3) Embedded Servers
+4) Acutators
+5) Embedded Databases
+6) Rapid Application Development
+
+Spring Boot Dis-Advantages
+---------------------------
+-> Migrating Spring project into Spring Boot application is a difficult task
+
+Conclusion
+----------
+
+Spring Boot = (Spring Framework - XML Configuration ) + Auto Configuration + Embedded Servers + Actuators
+---------------------------------------------------------------------------------
+What is Spring Framework?
+What type of applications can be developed using Spring?
+What is Spring Boot?
+Spring vs Spring Boot
+Spring Boot definition
+Spring Boot Advantages (starters, auto config, actuators, embedded servers & db)
+Spring Boot Dis-Advantages
+Conclusion
+---------------------------------------------------------------------------------
+Create First Application Using Spring Boot
+---------------------------------------------------------------------------------
+-> To create Spring Boot applications, Spring team provided Initiazr website
+
+		URL : start.spring.io
+
+-> We can create Spring Boot applications using IDE also (IDEs internally communicate with Initiazr website only to create boot application)
+
+Spring Tool Suite (STS) Download Links
+---------------------------------------
+(32 bit)
+https://download.springsource.com/release/STS/3.9.6.RELEASE/dist/e4.9/spring-tool-suite-3.9.6.RELEASE-e4.9.0-win32.zip
+
+
+(64 bit)
+https://download.springsource.com/release/STS/3.9.6.RELEASE/dist/e4.9/spring-tool-suite-3.9.6.RELEASE-e4.9.0-win32-x86_64.zip
+
+
+
+
+--------------------------------------------------------------------------------------------
+
+https://start.spring.io/starter.zip?name=02-Spring-Boot-App&groupId=in.ashokit&artifactId=02-Spring-Boot-App&version=0.0.1-SNAPSHOT&description=Demo+project+for+Spring+Boot&packageName=in.ashokit&type=maven-project&packaging=jar&javaVersion=1.8&language=java&bootVersion=2.4.5.RELEASE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

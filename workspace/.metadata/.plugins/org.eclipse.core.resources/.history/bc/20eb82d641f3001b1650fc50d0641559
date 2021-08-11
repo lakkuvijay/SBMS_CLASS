@@ -1,0 +1,27 @@
+package in.ashokit.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import in.ashokit.request.PassengerRequest;
+import in.ashokit.response.TicketResponse;
+
+@Service
+public class TicketService {
+
+	
+	public TicketResponse initiateTicketBookProcess(PassengerRequest requestData) {
+
+		String endpointUrl = "http://localhost:9090/bookticket";
+		
+		
+
+		return body;
+	}
+
+}

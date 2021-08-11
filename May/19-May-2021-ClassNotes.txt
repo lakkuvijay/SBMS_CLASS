@@ -1,0 +1,142 @@
+Last session : Database Setup (DB server & DB Client)
+-------------------------------------------------------------------------
+-> When we install oracle db in our system we will get sql commandline to execute sql queries.
+
+Note: It is very difficult to write complex sql queries in command line.
+In industry people will use SQL developer as a client software to write sql queries.
+----------------------------------------------------------------------------------
+-> To communicate with DB using data jpa our java application should have below things.
+
+		1) DB Config
+
+		2) Entity Class
+
+		3) Repository Interface
+
+-> DB Config contains Database Configuration Properites
+	(Driver class, url, username and password)
+
+-> The java class which is mapped with db table is called as Entity class.
+
+-> Repository interface provided method to perform CRUD operations with db table.
+
+----------------------------------------------------------------------------------
+-> In spring boot application we will write db config in application.properties file
+
+-------------------------------application.properties--------------------------
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.datasource.driverClassName=
+--------------------------------------------------------------------------------
+
+-> Based on above properties Data JPA will create connection pool and it provide DB connection to communicate with database.
+
+---------------------------------------Entity class-------------------------------
+
+-> We will map our java class with database table using below annotations
+
+ a) @Entity  : To represent java class as entity (It is mandatory)
+
+ b) @Table  : To map class name with db table name (It is optional).
+
+     Note: If db table name & entity class name is same then @Table is optional.
+
+ c) @Id  : To represent primary key column mapped variable (It is mandatory)
+
+ d) @Column : To map entity class variable with Db tbl column name (Optional)
+
+    Note: If db table column name & entity cls varibale name is same then @Column is optional.
+
+----------------------------------------------------------------------------------------------
+-> Spring Data JPA provided 2 interfaces to perform curd operations. They are
+
+	1) CrudRepository
+	2) JpaRepository
+
+-> CrudRepository provided methods to perform only CRUD operations 
+
+-> JpaRepository provided methods to perform Crud operations + Pagination + Sorting
+
+Note: JpaRepository is having more functionalities than CrudRepository
+---------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+Developing First Application Using Spring Data JPA
+----------------------------------------------------------------------------------------------
+1) Create a table in database
+
+CREATE TABLE EMP_TBL(
+    EMP_ID NUMBER(10),
+    EMP_NAME VARCHAR2(20),
+    EMP_SAL NUMBER(10,2),
+    PRIMARY KEY (EMP_ID)
+);
+
+2) Create Spring Boot application with below dependencies
+
+	1) spring-boot-starter-data-jpa
+	2) oracle ( or ) mysql
+
+
+3) Configure datasource properties in application.properties file
+
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE
+spring.datasource.username=IES_DEV
+spring.datasource.password=IES_DEV
+spring.datasource.driverClassName=jdbc.oracle.OracleDriver
+
+4) Create Java class and map with db table
+---------------------------------------------------------------------------------------------
+@Entity
+@Table(name="EMP_TBL")
+public class Employee{
+
+    @Id
+    @Column(name="EMP_ID")
+    private Integer empId;
+
+    @Column(name="EMP_NAME")
+    private String empName; 
+
+    @Column(name="EMP_SAL")
+    private Double empSal;
+
+     //setters & getters
+}
+----------------------------------------------------------------------------------------------
+
+5) Create a interface and extend the properties from Spring Data JPA Repository interface.
+
+@Repository
+public interface EmpRepository extends CrudRepository<Employee, Integer>{
+
+}
+----------------------------------------------------------------------------------------------
+
+6) Get EmpRepository bean object in boot start class using IOC reference and call the methods to perform Crud operations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

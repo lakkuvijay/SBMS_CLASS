@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="REST_URL2" key="selection"/>
+		<list key="findhistory">
+			<item value="REST_URL2"/>
+			<item value="TicketResponse"/>
+			<item value="PassengerRequest"/>
+			<item value="response"/>
+			<item value="createApplicationContext"/>
+			<item value="webApplicationType"/>
+			<item value="deduceFromClasspath"/>
+		</list>
+	</section>
+</section>

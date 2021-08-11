@@ -1,0 +1,15 @@
+Last session : Transactions in application
+------------------------------------------------------------------------
+
+-> When our application is performing DB operations then transactions are required.
+
+-> Transaction is mandatory for only non-select operations
+
+		Ex: create, update and delete
+
+-> Transaction is optional for select operations.
+
+
+
+
+

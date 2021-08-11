@@ -1,0 +1,152 @@
+Last session : Message Converters
+-------------------------------------------------------------------------
+
+-> We are using objects for rest api methods development.
+
+-> Method parameter and method return type we are using as object.
+
+-> If we use objects then our methods will be loosely coupled with format of data.
+
+---------------------------------------------------------------------------------
+@RestController
+public class BookRestController {
+
+	@GetMapping("/book")
+	public Book getBookData() {
+		Book b = new Book(101, "Spring", 450.00);
+		return b;
+	}
+}
+----------------------------------------------------------------------------------
+Q-1) As the above rest api method is returning object, client will recieve that object or will not recieve that object?
+
+Ans) Client will not recieve object bcz of intereoperability. Rest api side Message Converters will be available to convert object data into client understandable format.
+
+Q-1) How Rest api will understand client expected format for response data?
+
+Ans) Client should send "Accept" header with expected response format in the request.
+
+	Accept = application/xml  (For xml response)
+	Accept = application/json (For json response)
+-----------------------------------------------------------------------------------
+How Java Object Is Converted To Json ?
+----------------------------------------------------------------------------------
+-> To convert Java Object To Json format we have JACKSON api.
+
+-> Jackson is a third party api which is getting used in Spring Boot.
+
+-> MessageConverters will use Jackson api to deal with JSON data.
+
+-> Using Jackson api we can convert java object to json and json to java obj.
+----------------------------------------------------------------------------------
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+----------------------------------------------------------------------------------
+package in.ashokit;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JavaToJsonConverter {
+
+	public static void main(String[] args) throws Exception {
+
+		Book book = new Book();
+		book.setBookId(101);
+		book.setBookName("Spring");
+		book.setBookPrice(450.00);
+
+		// convert book data into json
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writerWithDefaultPrettyPrinter()
+							.writeValueAsString(book);
+		System.out.println(json);
+	}
+
+}
+----------------------------------------------------------------------------------
+How to convert Java object to XML format?
+----------------------------------------------------------------------------------
+-> To convert java object to xml format we will use JAX-B api.
+
+-> JAX-B api is part of jdk. We no need to add any dependency for JAXB.
+
+-> To convert java object into xml format, that java class should have @XmlRootElement annotation.
+-----------------------------------------------------------------------------------
+package in.ashokit;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Book {
+
+	private Integer bookId;
+	private String bookName;
+	private Double bookPrice;
+
+	public Integer getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
+	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public Double getBookPrice() {
+		return bookPrice;
+	}
+
+	public void setBookPrice(Double bookPrice) {
+		this.bookPrice = bookPrice;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", bookName=" + bookName + ", bookPrice=" + bookPrice + "]";
+	}
+
+}
+---------------------------------------------------------------------------------
+package in.ashokit;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
+public class JavaToXmlConverter {
+
+	public static void main(String[] args) throws Exception {
+
+		Book b = new Book();
+		b.setBookId(201);
+		b.setBookName("Hibernate");
+		b.setBookPrice(500.00);
+
+		JAXBContext context = JAXBContext.newInstance(Book.class);
+
+		Marshaller marshaller = context.createMarshaller();
+
+		marshaller.marshal(b, System.out);
+	}
+
+}
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

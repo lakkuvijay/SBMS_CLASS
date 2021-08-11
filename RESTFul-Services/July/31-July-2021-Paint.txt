@@ -1,0 +1,49 @@
+Last session: How to send headers in request & exchange method
+-------------------------------------------------------------------------
+
+-> To set headers to the request we will use HttpHeaders class
+
+-> To add Headers to the request we will uses HttpEntity class
+
+		HttpHeaders headers = new HttpHeaders();
+			headers.set(key1,value1);
+			headers.set(key2,value2);
+
+		HttpEntity entity = new HttpEntity(body,headers);
+
+		rt.exchange(Url, Method, entity, type);
+-------------------------------------------------------------------------
+-> Now a days people are not using RestTemplate bcz Spring itself saying to use WebClient
+
+-> RestTemplate introduced in Spring 3.0 and WebClient introduced in Spring 5.0
+
+-> RestTemplate supports only synchronus communication where as WebClient supports both Sync and Async communication.
+
+------------------------------------------------------------------------
+
+Q) What is Synchronus Communication?
+------------------------------------
+-> After making the request if our thread is waiting for the response to continue its execution then it is called as Sync communication.
+
+
+Q) What is Asynchronus Communication?
+------------------------------------
+-> After making the request if our thread will continue its execution without waiting for the response then it is called as Aync communication.
+
+------------------------------------------------------------------------
+
+-> RestTemplate class is part of spring-boot-starter-web dependency where as WebClient is part of spring-boot-starter-webflux dependency
+
+
+
+
+
+
+
+
+
+
+
+
+
+

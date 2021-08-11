@@ -1,0 +1,12 @@
+server:
+  port: 9090
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        exclude: beans, mappings
+        management: null
+  endpoint:
+    shutdown:
+      enabled: true

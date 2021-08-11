@@ -1,0 +1,101 @@
+Last session (04-Jul-21) : Http request & response structure
+------------------------------------------------------------------------
+Today's session : HTTP Protocol Methods
+------------------------------------------------------------------------
+
+-> Rest api methods should be binded to HTTP Protocol methods. 
+
+	Get Request --------> @GetMapping
+	Post Request -------> @PostMapping
+	Put Request -------> @PutMapping
+	Delete Request ----> @DeleteMapping
+
+--------------------------------------------------------------------------------
+HTTP GET Method
+-------------------------------------------------------------------------------
+-> If client wants to get data from rest api method, then that rest api method should be binded to get request using @GetMapping annotation.
+
+-> GET Request will not contain request body
+
+-> Clients can send data to rest api in the URL (query params & path Params) while sending GET request.
+
+--------------------------------------------------------------------------------
+HTTP POST Method
+---------------------------------------------------------------------------------
+-> If REST api method is responsible to create a new record with client given data then we will bind that method to HTTP Post Method using @PostMapping annotation.
+
+-> HTTP Post Method will have request body.
+
+-> Clients can send data to POST Request Method using
+
+		1) Path Params
+		2) Query Params
+		3) Request Body
+
+-> Simple and text data can be sent in URL and complex/secured/sensitive data should be sent in request body.
+----------------------------------------------------------------------------------
+HTTP PUT Request
+----------------------------------------------------------------------------------
+-> HTTP PUT method is used for updating the existing record
+
+-> If client wants to update any existing record then we should bind our rest api method to HTTP PUT request using @PutMapping annotation
+
+-> HTTP Put Request contains Request body.
+
+-> Clients can send data to PUT Request Method using
+
+		1) Path Params
+		2) Query Params
+		3) Request Body
+-----------------------------------------------------------------------------------
+HTTP DELETE
+----------------------------------------------------------------------------------
+-> HTTP DELETE method is responsible for deleting the record
+
+-> If client wants to delete any record using rest api method, then we should bind that rest api method to DELETE request usign @DeleteMapping annotation.
+
+-> HTTP DELETE will have Request Body.
+
+
+-> Clients can send data to DELETE Request Method using
+
+		1) Path Params
+		2) Query Params
+		3) Request Body
+-----------------------------------------------------------------------------------
+Summary
+----------------------------------------------------------------------------------
+-> What is HTTP Protocol ?
+
+-> What HTTP methods we will use in REST API development
+
+-> When to use which HTTP method
+
+-> HTTP Request Structure
+
+-> HTTP Response Structure
+
+-> HTTP Status Codes
+
+-> HTTP Status Messages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Book.java&apos; to &apos;31-JAX-B-App/src/main/java/in.ashokit&apos;&#x0D;&#x0A;- Original project: &apos;30-Jackson-app&apos;&#x0D;&#x0A;- Destination element: &apos;31-JAX-B-App/src/main/java/in.ashokit&apos;&#x0D;&#x0A;- Original element: &apos;in.ashokit.Book.java&apos;" description="Copy compilation unit" destination="=31-JAX-B-App/src\/main\/java&lt;in.ashokit" element1="/src\/main\/java&lt;in.ashokit{Book.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1625626753780" units="1" version="1.0"/>
+</session>

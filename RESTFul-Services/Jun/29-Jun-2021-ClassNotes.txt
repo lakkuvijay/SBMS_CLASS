@@ -1,0 +1,81 @@
+Last session : What is Distributed application & why ?
+-------------------------------------------------------------------------
+-> If one application is communicating with another application then it is called as Distributed application.
+
+-> With the help of distributed application we can re-use business services.
+
+-> Distributed applications are meant for business to business communication.
+
+		Passport app -----------> Aadhar app
+
+		Makemytrip app ----------> Air Lines, Hotels, irctc..
+
+-------------------------------------------------------------------------
+-> To develop Distributed applications we will use Webservices.
+-------------------------------------------------------------------------
+What is Webservice?
+-------------------------------------------------------------------------
+-> Webservices is a distributed technology which is used to develop distributed applications with Intereoperability
+-------------------------------------------------------------------------
+What is Intereoperability?
+-------------------------------------------------------------------------
+Irrespective of the platform and irrespective of the programming language if applications are communicating then they are called as Intereoperable applications.
+
+
+			Java <--------> .Net
+
+			Python <-------> Salesforce
+
+			Angular <------> Java
+
+			Python <--------> Java
+-------------------------------------------------------------------------
+-> In distributed applications consumer & provider applications will exchange the data.
+
+
+-> Provider application will decide input data structure & output data structure.
+
+Note: The data which is exchanging between consumer and provider should be intereoperable.
+
+-> XML, JSON and YML are universal data formats for exchanging data in webservices.
+
+Note: In distributed applications we should not exchange the data in object format.
+-------------------------------------------------------------------------
+
+-> In Java we can develop distributed applications with Intereoperability in 2 ways
+
+		1) Webservices (SOAP Webservices)
+		2) RESTful Services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
